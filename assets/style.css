@@ -1,0 +1,269 @@
+:root {
+  --ff-bg: #0a0a0f;
+  --ff-surface: #111118;
+  --ff-border: #1e1e2e;
+  --ff-text: #e5e7eb;
+  --ff-muted: #6b7280;
+  --ff-green: #4ade80;
+  --ff-green-dim: #34d399;
+  --ff-radius: 12px;
+  --ff-font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--ff-bg);
+  color: var(--ff-text);
+  font-family: var(--ff-font);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.muted {
+  color: var(--ff-muted);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ff-header {
+  padding: 1.25rem 1rem 0.75rem;
+  border-bottom: 1px solid var(--ff-border);
+  background: rgba(10, 10, 15, 0.95);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.ff-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ff-logo {
+  flex-shrink: 0;
+}
+
+.ff-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.ff-tagline {
+  margin: 0.15rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--ff-muted);
+}
+
+.ff-updated {
+  margin: 0.75rem 0 0;
+  font-size: 0.75rem;
+}
+
+.ff-main {
+  padding: 1rem;
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.ff-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  margin-bottom: 1rem;
+}
+
+.ff-input,
+.ff-select {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  border-radius: var(--ff-radius);
+  border: 1px solid var(--ff-border);
+  background: var(--ff-surface);
+  color: var(--ff-text);
+  font: inherit;
+}
+
+.ff-filter-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+@media (min-width: 480px) {
+  .ff-filter-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.ff-status {
+  font-size: 0.875rem;
+  color: var(--ff-muted);
+  margin-bottom: 0.75rem;
+  min-height: 1.25rem;
+}
+
+.ff-listings {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ff-card {
+  background: var(--ff-surface);
+  border: 1px solid var(--ff-border);
+  border-radius: var(--ff-radius);
+  padding: 1rem;
+}
+
+.ff-card-head {
+  margin-bottom: 0.5rem;
+}
+
+.ff-match {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.ff-meta {
+  margin: 0.25rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--ff-muted);
+}
+
+.ff-seat {
+  margin: 0.5rem 0 0;
+  font-size: 0.875rem;
+}
+
+.ff-note {
+  margin: 0.35rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--ff-green-dim);
+}
+
+.ff-pricing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.875rem;
+  padding-top: 0.875rem;
+  border-top: 1px solid var(--ff-border);
+}
+
+.ff-price-block {
+  flex: 1;
+  min-width: 8rem;
+}
+
+.ff-price {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--ff-green);
+  font-variant-numeric: tabular-nums;
+}
+
+.ff-price-label {
+  display: block;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ff-muted);
+  margin-bottom: 0.15rem;
+}
+
+.ff-compare {
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--ff-muted);
+}
+
+.ff-save {
+  color: var(--ff-green-dim);
+}
+
+.ff-btn-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1rem;
+  border-radius: 999px;
+  border: none;
+  background: #25d366;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ff-btn-wa:active {
+  transform: scale(0.98);
+}
+
+.ff-footer {
+  padding: 1.5rem 1rem 2rem;
+  max-width: 42rem;
+  margin: 0 auto;
+  border-top: 1px solid var(--ff-border);
+}
+
+.ff-disclaimers summary {
+  cursor: pointer;
+  font-size: 0.8125rem;
+  color: var(--ff-muted);
+  margin-bottom: 0.5rem;
+}
+
+.ff-disclaimers ul {
+  margin: 0;
+  padding-left: 1.125rem;
+  font-size: 0.75rem;
+  color: var(--ff-muted);
+}
+
+.ff-disclaimers li + li {
+  margin-top: 0.35rem;
+}
+
+.ff-contact {
+  margin: 1rem 0 0;
+  font-size: 0.8125rem;
+}
+
+.ff-contact a {
+  color: var(--ff-green-dim);
+}
+
+.ff-empty {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--ff-muted);
+}
