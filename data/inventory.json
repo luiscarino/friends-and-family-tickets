@@ -1,7 +1,7 @@
 {
   "format": "fwc26-friends-family-catalog",
   "formatVersion": 2,
-  "publishedAt": "2026-06-01T23:07:07.810Z",
+  "publishedAt": "2026-06-01T23:18:58.561Z",
   "brand": {
     "title": "Friends and Family Tickets",
     "tagline": "Private WC26 listings · Invite only",
@@ -11,9 +11,7 @@
   "disclaimers": [
     "Private sale between friends and family — not the official FIFA Ticket Resale Marketplace.",
     "Prices shown are seller asks in USD; no FIFA buyer service fee on these private sales.",
-    "FIFA resale estimate includes ~15% buyer fee on top of list price for comparison only.",
     "Availability is not guaranteed until confirmed via WhatsApp; tickets subject to FIFA transfer rules.",
-    "Sold listings show match and seat details only — sale prices are not published.",
     "This page is unlisted; please do not share the link publicly."
   ],
   "stats": {

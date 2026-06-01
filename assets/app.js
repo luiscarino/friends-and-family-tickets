@@ -19,7 +19,10 @@
     contact: document.getElementById("contact-line"),
   };
 
-  let catalog = null;
+  const REMOVED_DISCLAIMERS = new Set([
+    "FIFA resale estimate includes ~15% buyer fee on top of list price for comparison only.",
+    "Sold listings show match and seat details only — sale prices are not published.",
+  ]);
 
   function listingStatus(l) {
     if (!l) return "available";
@@ -497,12 +500,15 @@
         : "";
     }
     if (els.disclaimers && Array.isArray(data.disclaimers)) {
-      els.disclaimers.innerHTML = data.disclaimers.map((d) => `<li>${escapeHtml(d)}</li>`).join("");
+      const lines = data.disclaimers.filter((d) => !REMOVED_DISCLAIMERS.has(String(d || "").trim()));
+      els.disclaimers.innerHTML = lines.map((d) => `<li>${escapeHtml(d)}</li>`).join("");
     }
     if (els.contact && data.brand && data.brand.contactEmail) {
       els.contact.hidden = false;
-      const em = escapeHtml(data.brand.contactEmail);
-      els.contact.innerHTML = `Questions? <a href="mailto:${em}">${em}</a>`;
+      const em = String(data.brand.contactEmail).trim();
+      els.contact.innerHTML =
+        `<span class="ff-contact-lead muted">Questions about a listing?</span> ` +
+        `<a class="ff-btn-contact" href="mailto:${escapeHtml(em)}">Email the seller</a>`;
     }
     fillSelect(els.venue, uniqueValues(data.listings || [], "venue"), "All venues");
     fillSelect(els.category, uniqueValues(data.listings || [], "category"), "All categories");

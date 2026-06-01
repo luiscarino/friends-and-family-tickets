@@ -583,12 +583,40 @@ body {
 }
 
 .ff-contact {
-  margin: 1rem 0 0;
+  margin: 1.25rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+}
+
+.ff-contact-lead {
   font-size: 0.8125rem;
 }
 
-.ff-contact a {
-  color: var(--ff-green-dim);
+.ff-btn-contact {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--ff-available-border);
+  background: rgba(74, 222, 128, 0.08);
+  color: var(--ff-green);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.ff-btn-contact:hover {
+  background: rgba(74, 222, 128, 0.14);
+  border-color: rgba(74, 222, 128, 0.45);
+}
+
+.ff-btn-contact:focus-visible {
+  outline: 2px solid var(--ff-green-dim);
+  outline-offset: 2px;
 }
 
 .ff-empty {
