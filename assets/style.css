@@ -115,6 +115,7 @@ body {
 }
 
 .ff-stage-counts .ff-stat,
+.ff-stage-header-counts .ff-stat,
 .ff-match-header-counts .ff-stat,
 .ff-stats .ff-stat {
   display: inline-block;
@@ -182,6 +183,7 @@ body {
   border-bottom: none;
 }
 
+/* Same flex header pattern as .ff-match-header — no <button> or <summary> */
 .ff-stage-header {
   display: block;
   width: 100%;
@@ -189,31 +191,37 @@ body {
   padding: 0;
   border: none;
   background: transparent;
-  color: inherit;
-  font: inherit;
-  text-align: left;
   cursor: pointer;
-  -webkit-appearance: none;
-  appearance: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ff-stage-header:focus {
+  outline: none;
+}
+
+.ff-stage-header:focus-visible {
+  outline: 2px solid var(--ff-green-dim);
+  outline-offset: 2px;
 }
 
 .ff-stage-header-inner {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  gap: 10px 16px;
-  padding: 20px 4px;
+  padding: 18px 4px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .ff-stage-header-main {
-  flex: 1 1 auto;
+  flex: 1 1 0%;
   min-width: 0;
+  padding-right: 16px;
 }
 
 .ff-stage-title {
-  display: block;
   margin: 0;
   font-size: 1.15rem;
   font-weight: 700;
@@ -221,19 +229,21 @@ body {
   line-height: 1.35;
 }
 
-.ff-stage-header-trailing {
+.ff-stage-header-actions {
   display: flex;
-  flex-shrink: 0;
   align-items: center;
-  gap: 12px;
+  flex: 0 0 auto;
 }
 
-.ff-stage-counts {
-  margin: 0;
+.ff-stage-header-counts {
+  margin: 0 12px 0 0;
   font-size: 0.88rem;
-  font-weight: 600;
+  font-weight: 700;
   white-space: nowrap;
-  text-align: right;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--ff-border);
 }
 
 .ff-stage-chevron {

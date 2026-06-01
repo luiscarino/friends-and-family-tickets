@@ -244,17 +244,17 @@
       .join("");
     return (
       `<section class="ff-stage-panel is-open" data-stage-id="${escapeHtml(stageGroup.id)}">` +
-      `<button type="button" class="ff-stage-header" aria-expanded="true" aria-controls="${escapeHtml(bodyId)}">` +
-      `<span class="ff-stage-header-inner">` +
-      `<span class="ff-stage-header-main">` +
-      `<span class="ff-stage-title">${escapeHtml(stageGroup.label)}</span>` +
-      `</span>` +
-      `<span class="ff-stage-header-trailing">` +
-      (countHtml ? `<span class="ff-stage-counts">${countHtml}</span>` : "") +
+      `<header class="ff-stage-header" role="button" tabindex="0" aria-expanded="true" aria-controls="${escapeHtml(bodyId)}">` +
+      `<div class="ff-stage-header-inner">` +
+      `<div class="ff-stage-header-main">` +
+      `<h2 class="ff-stage-title">${escapeHtml(stageGroup.label)}</h2>` +
+      `</div>` +
+      `<div class="ff-stage-header-actions">` +
+      (countHtml ? `<p class="ff-stage-header-counts">${countHtml}</p>` : "") +
       `<span class="ff-stage-chevron" aria-hidden="true"></span>` +
-      `</span>` +
-      `</span>` +
-      `</button>` +
+      `</div>` +
+      `</div>` +
+      `</header>` +
       `<div class="ff-stage-body" id="${escapeHtml(bodyId)}">${body}</div>` +
       `</section>`
     );
@@ -543,16 +543,27 @@
     }
   }
 
+  function toggleStagePanel(header) {
+    const panel = header.closest(".ff-stage-panel");
+    if (!panel) return;
+    const open = panel.classList.toggle("is-open");
+    header.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
   function wireStageAccordions() {
     if (!els.listings || els.listings._stageWired) return;
     els.listings._stageWired = true;
     els.listings.addEventListener("click", (e) => {
-      const btn = e.target.closest(".ff-stage-header");
-      if (!btn || !els.listings.contains(btn)) return;
-      const panel = btn.closest(".ff-stage-panel");
-      if (!panel) return;
-      const open = panel.classList.toggle("is-open");
-      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      const header = e.target.closest(".ff-stage-header");
+      if (!header || !els.listings.contains(header)) return;
+      toggleStagePanel(header);
+    });
+    els.listings.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      const header = e.target.closest(".ff-stage-header");
+      if (!header || !els.listings.contains(header)) return;
+      e.preventDefault();
+      toggleStagePanel(header);
     });
   }
 
