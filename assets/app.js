@@ -22,7 +22,12 @@
   let catalog = null;
 
   function listingStatus(l) {
-    return l && l.status === "sold" ? "sold" : "available";
+    if (!l) return "available";
+    if (l.status === "sold") return "sold";
+    if (l.soldAt) return "sold";
+    // Sold export strips price + WhatsApp; v1/mismatch data may omit status.
+    if (l.priceEach == null && l.fifaBuyerEach == null && !l.whatsappMessage) return "sold";
+    return "available";
   }
 
   function fmtMoney(n) {
@@ -158,8 +163,13 @@
   }
 
   function renderAvailableCard(l) {
+    if (listingStatus(l) === "sold") return renderSoldCard(l);
     const datePart = [l.dateLabel, l.timeLabel].filter(Boolean).join(" · ");
-    const href = waHref(l, catalog.brand);
+    const hasPrice = Number.isFinite(Number(l.priceEach));
+    const href = hasPrice ? waHref(l, catalog.brand) : "";
+    const waBtn = hasPrice
+      ? `<a class="ff-btn-wa" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">Buy on WhatsApp</a>`
+      : "";
     return (
       `<article class="ff-card ff-card--available" data-id="${escapeHtml(l.id)}" data-status="available">` +
       `<div class="ff-card-body">` +
@@ -175,7 +185,7 @@
       `<div class="ff-price">${fmtMoney(l.priceEach)} <span class="ff-price-unit">/ ticket</span></div>` +
       `<p class="ff-compare">FIFA resale est. ${fmtMoney(l.fifaBuyerEach)} · <span class="ff-save">Save ${fmtMoney(l.saveEach)}</span></p>` +
       `</div>` +
-      `<a class="ff-btn-wa" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">Buy on WhatsApp</a>` +
+      waBtn +
       `</div>` +
       `</div>` +
       `</article>`
