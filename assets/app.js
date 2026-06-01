@@ -241,9 +241,11 @@
       `<details class="ff-stage-panel" open>` +
       `<summary class="ff-stage-summary">` +
       `<span class="ff-stage-summary-row">` +
-      `<span class="ff-stage-label">${escapeHtml(stageGroup.label)}</span>` +
-      (countHtml ? `<span class="ff-stage-counts">${countHtml}</span>` : `<span class="ff-stage-counts" aria-hidden="true"></span>`) +
+      `<span class="ff-stage-aside">` +
+      (countHtml ? `<span class="ff-stage-counts">${countHtml}</span>` : "") +
       `<span class="ff-stage-chevron" aria-hidden="true"></span>` +
+      `</span>` +
+      `<span class="ff-stage-label">${escapeHtml(stageGroup.label)}</span>` +
       `</span>` +
       `</summary>` +
       `<div class="ff-stage-body">${body}</div>` +

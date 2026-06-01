@@ -204,36 +204,41 @@ body {
   display: none;
 }
 
-/* Valid phrasing wrapper — grid works in Chrome + Safari (no div inside summary) */
+/* Float layout inside <summary> — reliable in Safari + Chrome (no flex/grid on summary) */
 .ff-stage-summary-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto;
-  align-items: center;
-  column-gap: 16px;
-  width: 100%;
-  box-sizing: border-box;
+  display: block;
   padding: 20px 4px;
+  overflow: hidden;
+}
+
+.ff-stage-aside {
+  float: right;
+  margin-left: 16px;
+  white-space: nowrap;
+}
+
+.ff-stage-counts {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 12px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-align: right;
 }
 
 .ff-stage-label {
+  display: block;
+  overflow: hidden;
   margin: 0;
-  min-width: 0;
   font-size: 1.15rem;
   font-weight: 700;
   color: #fff;
   line-height: 1.35;
 }
 
-.ff-stage-counts {
-  justify-self: end;
-  font-size: 0.88rem;
-  font-weight: 600;
-  white-space: nowrap;
-  text-align: right;
-}
-
 .ff-stage-chevron {
-  justify-self: end;
+  display: inline-block;
+  vertical-align: middle;
   width: 32px;
   height: 32px;
   border-radius: 50%;
