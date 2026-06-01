@@ -24,6 +24,8 @@
     "Sold listings show match and seat details only — sale prices are not published.",
   ]);
 
+  let catalog = null;
+
   function listingStatus(l) {
     if (!l) return "available";
     if (l.status === "sold") return "sold";
