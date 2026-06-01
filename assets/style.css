@@ -162,6 +162,80 @@ body {
   min-height: 1.25rem;
 }
 
+.ff-stage-accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+.ff-stage-panel {
+  border-bottom: 1px solid var(--ff-border);
+}
+
+.ff-stage-panel:last-child {
+  border-bottom: none;
+}
+
+.ff-stage-summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 4px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.ff-stage-summary::-webkit-details-marker {
+  display: none;
+}
+
+.ff-stage-label {
+  flex: 1;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.ff-stage-counts {
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.ff-stage-chevron {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--ff-border);
+  background: rgba(255, 255, 255, 0.04);
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.ff-stage-chevron::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--ff-muted);
+  border-bottom: 2px solid var(--ff-muted);
+  transform: translate(-50%, -65%) rotate(45deg);
+}
+
+.ff-stage-panel[open] .ff-stage-chevron {
+  transform: rotate(180deg);
+}
+
+.ff-stage-body {
+  padding: 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
 .ff-match-group {
   margin-bottom: 0;
   padding: 0;
@@ -263,7 +337,7 @@ body {
 .ff-listings {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0;
 }
 
 .ff-card {

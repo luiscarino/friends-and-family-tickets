@@ -131,13 +131,31 @@
   }
 
   function compareByMatchOrder(a, b) {
+    const so = (a.stageOrder ?? 99) - (b.stageOrder ?? 99);
+    if (so !== 0) return so;
+    const fn = (a.fifaMatchNumber ?? 9999) - (b.fifaMatchNumber ?? 9999);
+    if (fn !== 0) return fn;
     const mo = (a.matchOrder ?? 0) - (b.matchOrder ?? 0);
     if (mo !== 0) return mo;
-    const mk = String(a.matchKey || "").localeCompare(String(b.matchKey || ""));
-    if (mk !== 0) return mk;
     const sr = statusRank(a) - statusRank(b);
     if (sr !== 0) return sr;
     return seatSortKey(a) - seatSortKey(b) || String(a.seatDisplay || "").localeCompare(String(b.seatDisplay || ""));
+  }
+
+  function inferStageForListing(l) {
+    if (l.stageId && l.stageLabel) {
+      return { id: l.stageId, label: l.stageLabel, order: l.stageOrder ?? 99 };
+    }
+    const St = typeof FWC26Stages !== "undefined" ? FWC26Stages : null;
+    if (St && typeof St.stageFromTitle === "function") return St.stageFromTitle(l.matchTitle);
+    return { id: "unknown", label: "Other Matches", order: 99 };
+  }
+
+  function parseFifaMatchNumber(title) {
+    const St = typeof FWC26Stages !== "undefined" ? FWC26Stages : null;
+    if (St && typeof St.parseMatchNumber === "function") return St.parseMatchNumber(title);
+    const m = String(title || "").match(/Match\s+(\d+)\b/i);
+    return m ? parseInt(m[1], 10) : null;
   }
 
   function countStatuses(listings) {
@@ -172,7 +190,58 @@
         }
         l.matchKey = `M${h.toString(16)}`;
       }
+      if (l.fifaMatchNumber == null) {
+        const n = parseFifaMatchNumber(l.matchTitle);
+        if (n != null) l.fifaMatchNumber = n;
+      }
+      if (!l.stageId) {
+        const stage = inferStageForListing(l);
+        l.stageId = stage.id;
+        l.stageLabel = stage.label;
+        l.stageOrder = stage.order;
+      }
     }
+  }
+
+  function groupByStage(rows) {
+    const stages = [];
+    const map = new Map();
+    for (const l of rows) {
+      const st = inferStageForListing(l);
+      if (!map.has(st.id)) {
+        const g = { id: st.id, label: st.label, order: st.order ?? 99, listings: [] };
+        map.set(st.id, g);
+        stages.push(g);
+      }
+      map.get(st.id).listings.push(l);
+    }
+    stages.sort((a, b) => a.order - b.order);
+    return stages;
+  }
+
+  function renderStageSection(stageGroup) {
+    const counts = countStatuses(stageGroup.listings);
+    const countHtml = renderStatusCounts(counts);
+    const matchGroups = groupListingsInOrder(stageGroup.listings);
+    const body = matchGroups
+      .map(
+        (g) =>
+          `<section class="ff-match-group" data-match-key="${escapeHtml(g.key)}">` +
+          renderMatchHeader(g) +
+          `<div class="ff-match-listings">${g.listings.map((l) => renderCard(l, true)).join("")}</div>` +
+          `</section>`
+      )
+      .join("");
+    return (
+      `<details class="ff-stage-panel" open>` +
+      `<summary class="ff-stage-summary">` +
+      `<span class="ff-stage-label">${escapeHtml(stageGroup.label)}</span>` +
+      (countHtml ? `<span class="ff-stage-counts">${countHtml}</span>` : "") +
+      `<span class="ff-stage-chevron" aria-hidden="true"></span>` +
+      `</summary>` +
+      `<div class="ff-stage-body">${body}</div>` +
+      `</details>`
+    );
   }
 
   function groupListingsInOrder(rows) {
@@ -395,16 +464,11 @@
               : "No tickets match your filters.";
         els.listings.innerHTML = `<div class="ff-empty">${escapeHtml(msg)}</div>`;
       } else {
-        const groups = groupListingsInOrder(rows);
-        els.listings.innerHTML = groups
-          .map(
-            (g) =>
-              `<section class="ff-match-group" data-match-key="${escapeHtml(g.key)}">` +
-              renderMatchHeader(g) +
-              `<div class="ff-match-listings">${g.listings.map((l) => renderCard(l, true)).join("")}</div>` +
-              `</section>`
-          )
-          .join("");
+        const stages = groupByStage(rows);
+        els.listings.innerHTML =
+          `<div class="ff-stage-accordion">` +
+          stages.map(renderStageSection).join("") +
+          `</div>`;
       }
     }
   }
