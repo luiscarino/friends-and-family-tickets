@@ -76,6 +76,26 @@
       .replace(/"/g, "&quot;");
   }
 
+  /** Drop repeated FIFA prefix in section headers (full title stays in search/export). */
+  function shortMatchTitle(title) {
+    let s = String(title || "Match").trim();
+    s = s.replace(/^FIFA\s+World\s+Cup\s+2026™?\s*[-–—:\u2013\u2014]\s*/i, "");
+    s = s.replace(/^FIFA\s+World\s+Cup\s+2026™?\s+/i, "");
+    return s.trim() || String(title || "Match").trim();
+  }
+
+  function renderStatusCounts(counts) {
+    const parts = [];
+    if (counts.available > 0) {
+      parts.push(`<span class="ff-stat ff-stat--available">${counts.available} available</span>`);
+    }
+    if (counts.sold > 0) {
+      if (parts.length) parts.push(`<span class="ff-stat-sep"> · </span>`);
+      parts.push(`<span class="ff-stat ff-stat--sold">${counts.sold} sold</span>`);
+    }
+    return parts.join("");
+  }
+
   function uniqueValues(listings, key) {
     const set = new Set();
     for (const l of listings) {
@@ -183,20 +203,17 @@
     const datePart = [group.dateLabel, group.timeLabel].filter(Boolean).join(" · ");
     const counts = countStatuses(group.listings);
     const total = group.listings.length;
+    const shortTitle = shortMatchTitle(group.matchTitle);
     return (
-      `<header class="ff-match-header" role="group" aria-label="${escapeHtml(group.matchTitle)}">` +
+      `<header class="ff-match-header" role="group" aria-label="${escapeHtml(shortTitle)}">` +
       `<div class="ff-match-header-accent" aria-hidden="true"></div>` +
       `<div class="ff-match-header-inner">` +
       `<div class="ff-match-header-main">` +
       `<p class="ff-match-header-eyebrow">Match · ${total} ticket${total === 1 ? "" : "s"}</p>` +
-      `<h2 class="ff-match-header-title">${escapeHtml(group.matchTitle)}</h2>` +
+      `<h2 class="ff-match-header-title">${escapeHtml(shortTitle)}</h2>` +
       `<p class="ff-match-header-meta">${escapeHtml(datePart)}${datePart && group.venue ? " · " : ""}${escapeHtml(group.venue)}</p>` +
       `</div>` +
-      `<p class="ff-match-header-counts">` +
-      `<span class="ff-stat ff-stat--available">${counts.available} available</span>` +
-      `<span class="ff-stat-sep"> · </span>` +
-      `<span class="ff-stat ff-stat--sold">${counts.sold} sold</span>` +
-      `</p>` +
+      `<p class="ff-match-header-counts">${renderStatusCounts(counts)}</p>` +
       `</div>` +
       `</header>`
     );
@@ -325,7 +342,6 @@
       `</div>` +
       `<div class="ff-sold-foot">` +
       (soldLine ? `<p class="ff-sold-date">${escapeHtml(soldLine)}</p>` : "") +
-      `<p class="ff-sold-tagline">Sold privately below FIFA resale</p>` +
       `</div>` +
       `</div>` +
       `</article>`
@@ -347,10 +363,7 @@
       return;
     }
     els.catalogStats.hidden = false;
-    els.catalogStats.innerHTML =
-      `<span class="ff-stat ff-stat--available">${available} available</span>` +
-      `<span class="ff-stat-sep"> · </span>` +
-      `<span class="ff-stat ff-stat--sold">${sold} sold</span>`;
+    els.catalogStats.innerHTML = renderStatusCounts({ available, sold });
   }
 
   function render() {
