@@ -222,6 +222,7 @@
   function renderStageSection(stageGroup) {
     const counts = countStatuses(stageGroup.listings);
     const countHtml = renderStatusCounts(counts);
+    const total = stageGroup.listings.length;
     const matchGroups = groupListingsInOrder(stageGroup.listings);
     const body = matchGroups
       .map(
@@ -235,9 +236,17 @@
     return (
       `<details class="ff-stage-panel" open>` +
       `<summary class="ff-stage-summary">` +
-      `<span class="ff-stage-label">${escapeHtml(stageGroup.label)}</span>` +
-      (countHtml ? `<span class="ff-stage-counts">${countHtml}</span>` : "") +
+      `<div class="ff-stage-header-accent" aria-hidden="true"></div>` +
+      `<div class="ff-stage-header-inner">` +
+      `<div class="ff-stage-header-main">` +
+      `<p class="ff-match-header-eyebrow">Tournament stage · ${total} ticket${total === 1 ? "" : "s"}</p>` +
+      `<h2 class="ff-match-header-title">${escapeHtml(stageGroup.label)}</h2>` +
+      `</div>` +
+      `<div class="ff-stage-header-actions">` +
+      (countHtml ? `<p class="ff-match-header-counts">${countHtml}</p>` : "") +
       `<span class="ff-stage-chevron" aria-hidden="true"></span>` +
+      `</div>` +
+      `</div>` +
       `</summary>` +
       `<div class="ff-stage-body">${body}</div>` +
       `</details>`
