@@ -6,18 +6,24 @@
   const els = {
     brandTitle: document.getElementById("brand-title"),
     brandTagline: document.getElementById("brand-tagline"),
+    catalogStats: document.getElementById("catalog-stats"),
     updatedAt: document.getElementById("updated-at"),
     search: document.getElementById("filter-search"),
+    status: document.getElementById("filter-status"),
     venue: document.getElementById("filter-venue"),
     category: document.getElementById("filter-category"),
     sort: document.getElementById("filter-sort"),
-    status: document.getElementById("status"),
+    statusLine: document.getElementById("status"),
     listings: document.getElementById("listings"),
     disclaimers: document.getElementById("disclaimers"),
     contact: document.getElementById("contact-line"),
   };
 
   let catalog = null;
+
+  function listingStatus(l) {
+    return l && l.status === "sold" ? "sold" : "available";
+  }
 
   function fmtMoney(n) {
     const v = Number(n);
@@ -34,6 +40,20 @@
       });
     } catch (_) {
       return iso;
+    }
+  }
+
+  function fmtSoldDate(iso) {
+    if (!iso) return "";
+    try {
+      return (
+        "Sold " +
+        new Date(String(iso).slice(0, 10) + "T12:00:00").toLocaleDateString(undefined, {
+          dateStyle: "medium",
+        })
+      );
+    } catch (_) {
+      return "Sold " + iso;
     }
   }
 
@@ -73,12 +93,19 @@
     if (values.includes(cur)) select.value = cur;
   }
 
+  function statusRank(l) {
+    return listingStatus(l) === "sold" ? 1 : 0;
+  }
+
   function filteredListings() {
     if (!catalog || !Array.isArray(catalog.listings)) return [];
     const q = (els.search && els.search.value || "").trim().toLowerCase();
     const venue = els.venue && els.venue.value;
     const cat = els.category && els.category.value;
+    const statusFilter = els.status && els.status.value;
+
     let rows = catalog.listings.filter((l) => {
+      if (statusFilter && listingStatus(l) !== statusFilter) return false;
       if (venue && l.venue !== venue) return false;
       if (cat && l.category !== cat) return false;
       if (!q) return true;
@@ -89,28 +116,53 @@
         l.seatDisplay,
         l.dateLabel,
         l.publicNote,
+        listingStatus(l),
       ]
         .join(" ")
         .toLowerCase();
       return hay.includes(q);
     });
 
-    const sort = (els.sort && els.sort.value) || "date-asc";
+    const sort = (els.sort && els.sort.value) || "default";
     rows = rows.slice();
-    rows.sort((a, b) => {
-      if (sort === "price-asc") return a.priceEach - b.priceEach;
-      if (sort === "price-desc") return b.priceEach - a.priceEach;
-      if (sort === "date-desc") return String(b.sortDate).localeCompare(String(a.sortDate));
-      return String(a.sortDate).localeCompare(String(b.sortDate));
-    });
+
+    if (sort === "price-asc" || sort === "price-desc") {
+      const available = rows.filter((l) => listingStatus(l) === "available");
+      const sold = rows.filter((l) => listingStatus(l) === "sold");
+      available.sort((a, b) => {
+        const d = (Number(a.priceEach) || 0) - (Number(b.priceEach) || 0);
+        return sort === "price-asc" ? d : -d;
+      });
+      sold.sort(
+        (a, b) =>
+          String(b.soldAt || b.sortDate).localeCompare(String(a.soldAt || a.sortDate)) ||
+          String(a.matchTitle).localeCompare(String(b.matchTitle))
+      );
+      rows = available.concat(sold);
+    } else if (sort === "date-desc") {
+      rows.sort(
+        (a, b) =>
+          statusRank(a) - statusRank(b) ||
+          String(b.sortDate).localeCompare(String(a.sortDate)) ||
+          String(a.matchTitle).localeCompare(String(b.matchTitle))
+      );
+    } else {
+      rows.sort(
+        (a, b) =>
+          statusRank(a) - statusRank(b) ||
+          String(a.sortDate).localeCompare(String(b.sortDate)) ||
+          String(a.matchTitle).localeCompare(String(b.matchTitle))
+      );
+    }
     return rows;
   }
 
-  function renderCard(l) {
+  function renderAvailableCard(l) {
     const datePart = [l.dateLabel, l.timeLabel].filter(Boolean).join(" · ");
     const href = waHref(l, catalog.brand);
     return (
-      `<article class="ff-card" data-id="${escapeHtml(l.id)}">` +
+      `<article class="ff-card ff-card--available" data-id="${escapeHtml(l.id)}" data-status="available">` +
+      `<div class="ff-card-body">` +
       `<div class="ff-card-head">` +
       `<h2 class="ff-match">${escapeHtml(l.matchTitle)}</h2>` +
       `<p class="ff-meta">${escapeHtml(datePart)}${datePart && l.venue ? " · " : ""}${escapeHtml(l.venue)}</p>` +
@@ -120,27 +172,94 @@
       `<div class="ff-pricing">` +
       `<div class="ff-price-block">` +
       `<span class="ff-price-label">Friends &amp; Family price</span>` +
-      `<div class="ff-price">${fmtMoney(l.priceEach)} <span style="font-size:0.75rem;font-weight:500;color:var(--ff-muted)">/ ticket</span></div>` +
+      `<div class="ff-price">${fmtMoney(l.priceEach)} <span class="ff-price-unit">/ ticket</span></div>` +
       `<p class="ff-compare">FIFA resale est. ${fmtMoney(l.fifaBuyerEach)} · <span class="ff-save">Save ${fmtMoney(l.saveEach)}</span></p>` +
       `</div>` +
       `<a class="ff-btn-wa" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">Buy on WhatsApp</a>` +
+      `</div>` +
       `</div>` +
       `</article>`
     );
   }
 
+  function renderSoldCard(l) {
+    const datePart = [l.dateLabel, l.timeLabel].filter(Boolean).join(" · ");
+    const soldLine = fmtSoldDate(l.soldAt);
+    const aria = `Sold — ${l.matchTitle}, ${l.seatDisplay}`;
+    return (
+      `<article class="ff-card ff-card--sold" data-id="${escapeHtml(l.id)}" data-status="sold" aria-label="${escapeHtml(aria)}">` +
+      `<div class="ff-card-body">` +
+      `<div class="ff-card-head">` +
+      `<div class="ff-card-title-row">` +
+      `<h2 class="ff-match">${escapeHtml(l.matchTitle)}</h2>` +
+      `<span class="ff-badge-sold">SOLD</span>` +
+      `</div>` +
+      `<p class="ff-meta">${escapeHtml(datePart)}${datePart && l.venue ? " · " : ""}${escapeHtml(l.venue)}</p>` +
+      `<p class="ff-seat">${escapeHtml(l.category)} · ${escapeHtml(l.seatDisplay)} · Qty ${l.quantity}</p>` +
+      (l.publicNote ? `<p class="ff-note">${escapeHtml(l.publicNote)}</p>` : "") +
+      `</div>` +
+      `<div class="ff-sold-foot">` +
+      (soldLine ? `<p class="ff-sold-date">${escapeHtml(soldLine)}</p>` : "") +
+      `<p class="ff-sold-tagline">Sold privately below FIFA resale</p>` +
+      `</div>` +
+      `</div>` +
+      `</article>`
+    );
+  }
+
+  function renderCard(l) {
+    return listingStatus(l) === "sold" ? renderSoldCard(l) : renderAvailableCard(l);
+  }
+
+  function renderStats() {
+    if (!els.catalogStats || !catalog) return;
+    const stats = catalog.stats || {};
+    let available = stats.availableCount;
+    let sold = stats.soldCount;
+    if (available == null || sold == null) {
+      const rows = catalog.listings || [];
+      available = rows.filter((l) => listingStatus(l) === "available").length;
+      sold = rows.filter((l) => listingStatus(l) === "sold").length;
+    }
+    if (available === 0 && sold === 0) {
+      els.catalogStats.hidden = true;
+      return;
+    }
+    els.catalogStats.hidden = false;
+    els.catalogStats.innerHTML =
+      `<span class="ff-stat ff-stat--available">${available} available</span>` +
+      `<span class="ff-stat-sep"> · </span>` +
+      `<span class="ff-stat ff-stat--sold">${sold} sold</span>`;
+  }
+
   function render() {
     if (!catalog) return;
     const rows = filteredListings();
-    if (els.status) {
-      els.status.textContent =
-        rows.length === catalog.listings.length
-          ? `${rows.length} listing${rows.length === 1 ? "" : "s"}`
-          : `${rows.length} of ${catalog.listings.length} listings`;
+    const total = (catalog.listings || []).length;
+
+    if (els.statusLine) {
+      if (!total) {
+        els.statusLine.textContent = "";
+      } else if (rows.length === total) {
+        els.statusLine.textContent = `${rows.length} listing${rows.length === 1 ? "" : "s"}`;
+      } else {
+        els.statusLine.textContent = `${rows.length} of ${total} listings`;
+      }
     }
+
     if (els.listings) {
-      if (!rows.length) {
-        els.listings.innerHTML = `<div class="ff-empty">No tickets match your filters.</div>`;
+      if (!total) {
+        els.listings.innerHTML =
+          `<div class="ff-empty">Catalog not available yet. The seller may still be preparing listings.</div>`;
+      } else if (!rows.length) {
+        const sf = els.status && els.status.value;
+        const msg =
+          sf === "available"
+            ? "No tickets available right now — try All or Sold to see recent sales."
+            : sf === "sold"
+              ? "No sold listings yet."
+              : "No tickets match your filters.";
+        els.listings.innerHTML = `<div class="ff-empty">${escapeHtml(msg)}</div>`;
       } else {
         els.listings.innerHTML = rows.map(renderCard).join("");
       }
@@ -168,6 +287,7 @@
     }
     fillSelect(els.venue, uniqueValues(data.listings || [], "venue"), "All venues");
     fillSelect(els.category, uniqueValues(data.listings || [], "category"), "All categories");
+    renderStats();
     render();
   }
 
@@ -180,22 +300,22 @@
       const data = JSON.parse(raw);
       if (data && Array.isArray(data.listings)) return data;
     } catch (_) {
-      /* fall through to fetch */
+      /* fall through */
     }
     return null;
   }
 
   function showLoadError(message) {
-    if (els.status) els.status.textContent = message;
+    if (els.statusLine) els.statusLine.textContent = message;
     if (els.listings) {
-      els.listings.innerHTML =
-        `<div class="ff-empty">${escapeHtml(message)}</div>`;
+      els.listings.innerHTML = `<div class="ff-empty">${escapeHtml(message)}</div>`;
     }
   }
 
   function wireFilters() {
     ["input", "change"].forEach((ev) => {
       els.search && els.search.addEventListener(ev, render);
+      els.status && els.status.addEventListener(ev, render);
       els.venue && els.venue.addEventListener(ev, render);
       els.category && els.category.addEventListener(ev, render);
       els.sort && els.sort.addEventListener(ev, render);

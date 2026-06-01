@@ -8,6 +8,17 @@
   --ff-green-dim: #34d399;
   --ff-radius: 12px;
   --ff-font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --ff-available-border: rgba(74, 222, 128, 0.28);
+  --ff-available-glow: rgba(74, 222, 128, 0.06);
+  --ff-sold-bg: #121016;
+  --ff-sold-surface: #16141c;
+  --ff-sold-border: rgba(75, 85, 99, 0.45);
+  --ff-sold-text: #9ca3af;
+  --ff-sold-text-dim: #6b7280;
+  --ff-sold-strike: #78716c;
+  --ff-sold-badge-bg: rgba(251, 191, 36, 0.14);
+  --ff-sold-badge-text: #fbbf24;
+  --ff-sold-overlay: rgba(248, 113, 113, 0.1);
 }
 
 *,
@@ -83,6 +94,25 @@ body {
   font-size: 0.75rem;
 }
 
+.ff-stats {
+  margin: 0.65rem 0 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.ff-stat--available {
+  color: var(--ff-green);
+}
+
+.ff-stat--sold {
+  color: var(--ff-sold-badge-text);
+}
+
+.ff-stat-sep {
+  color: var(--ff-muted);
+  font-weight: 400;
+}
+
 .ff-main {
   padding: 1rem;
   max-width: 42rem;
@@ -115,7 +145,13 @@ body {
 
 @media (min-width: 480px) {
   .ff-filter-row {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 640px) {
+  .ff-filter-row {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -137,6 +173,97 @@ body {
   border: 1px solid var(--ff-border);
   border-radius: var(--ff-radius);
   padding: 1rem;
+}
+
+.ff-card--available {
+  background: var(--ff-surface);
+  border-color: var(--ff-available-border);
+  box-shadow: 0 0 0 1px var(--ff-available-glow);
+}
+
+.ff-card--sold {
+  background: var(--ff-sold-bg);
+  border-color: var(--ff-sold-border);
+}
+
+.ff-card-body {
+  position: relative;
+}
+
+.ff-card--sold .ff-card-body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    168deg,
+    transparent 46%,
+    var(--ff-sold-overlay) 46%,
+    var(--ff-sold-overlay) 48%,
+    transparent 48%
+  );
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.ff-card-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.ff-badge-sold {
+  flex-shrink: 0;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--ff-sold-badge-bg);
+  color: var(--ff-sold-badge-text);
+}
+
+.ff-card--sold .ff-match,
+.ff-card--sold .ff-seat {
+  text-decoration: line-through;
+  text-decoration-color: var(--ff-sold-strike);
+  text-decoration-thickness: 1.5px;
+  color: var(--ff-sold-text);
+}
+
+.ff-card--sold .ff-meta {
+  color: var(--ff-sold-text-dim);
+}
+
+.ff-card--sold .ff-note {
+  color: var(--ff-sold-text);
+}
+
+.ff-sold-foot {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--ff-sold-border);
+}
+
+.ff-sold-date {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ff-sold-badge-text);
+}
+
+.ff-sold-tagline {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--ff-sold-text-dim);
+}
+
+.ff-price-unit {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ff-muted);
 }
 
 .ff-card-head {

@@ -1,7 +1,7 @@
 {
   "format": "fwc26-friends-family-catalog",
-  "formatVersion": 1,
-  "publishedAt": "2026-05-31T04:50:55.741Z",
+  "formatVersion": 2,
+  "publishedAt": "2026-06-01T20:54:17.360Z",
   "brand": {
     "title": "Friends and Family Tickets",
     "tagline": "Private WC26 listings · Invite only",
@@ -13,55 +13,14 @@
     "Prices shown are seller asks in USD; no FIFA buyer service fee on these private sales.",
     "FIFA resale estimate includes ~15% buyer fee on top of list price for comparison only.",
     "Availability is not guaranteed until confirmed via WhatsApp; tickets subject to FIFA transfer rules.",
+    "Sold listings show match and seat details only — sale prices are not published.",
     "This page is unlisted; please do not share the link publicly."
   ],
+  "stats": {
+    "availableCount": 17,
+    "soldCount": 3
+  },
   "listings": [
-    {
-      "id": "La4faa21d",
-      "matchTitle": "FIFA World Cup 2026™ - Match 1 - Mexico vs South Africa",
-      "venue": "Mexico City Stadium",
-      "dateLabel": "Thursday, 11 June 2026",
-      "timeLabel": "13:00",
-      "sortDate": "2026-06-11T17:00:00+0000",
-      "category": "Front Category 2",
-      "seatDisplay": "Block 534 · Row 1 · Seat 7",
-      "block": "534",
-      "row": "1",
-      "seats": [
-        7
-      ],
-      "quantity": 1,
-      "currency": "USD",
-      "priceEach": 3500,
-      "fifaListEach": 4000,
-      "fifaBuyerEach": 4600,
-      "saveEach": 1100,
-      "savePct": 23.9,
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 1 - Mexico vs South Africa\nDate: Thursday, 11 June 2026 13:00\nVenue: Mexico City Stadium\nCategory: Front Category 2\nSeats: Block 534 · Row 1 · Seat 7\nYour price: $3500 USD each\n(Qty: 1)\n\nIs this still available?"
-    },
-    {
-      "id": "Lff73ec96",
-      "matchTitle": "FIFA World Cup 2026™ - Match 1 - Mexico vs South Africa",
-      "venue": "Mexico City Stadium",
-      "dateLabel": "Thursday, 11 June 2026",
-      "timeLabel": "13:00",
-      "sortDate": "2026-06-11T17:00:00+0000",
-      "category": "Front Category 2",
-      "seatDisplay": "Block 536 · Row 1 · Seat 9",
-      "block": "536",
-      "row": "1",
-      "seats": [
-        9
-      ],
-      "quantity": 1,
-      "currency": "USD",
-      "priceEach": 3500,
-      "fifaListEach": 4000,
-      "fifaBuyerEach": 4600,
-      "saveEach": 1100,
-      "savePct": 23.9,
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 1 - Mexico vs South Africa\nDate: Thursday, 11 June 2026 13:00\nVenue: Mexico City Stadium\nCategory: Front Category 2\nSeats: Block 536 · Row 1 · Seat 9\nYour price: $3500 USD each\n(Qty: 1)\n\nIs this still available?"
-    },
     {
       "id": "Lb707d128",
       "matchTitle": "FIFA World Cup 2026™ - Match 10 - Germany vs Curaçao",
@@ -69,6 +28,7 @@
       "dateLabel": "Sunday, 14 June 2026",
       "timeLabel": "12:00",
       "sortDate": "2026-06-14T16:00:00+0000",
+      "soldAt": null,
       "category": "Category 1",
       "seatDisplay": "Block 352 · Row M · Seat 3",
       "block": "352",
@@ -77,13 +37,14 @@
         3
       ],
       "quantity": 1,
+      "status": "available",
       "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 10 - Germany vs Curaçao\nDate: Sunday, 14 June 2026 12:00\nVenue: Houston Stadium\nCategory: Category 1\nSeats: Block 352 · Row M · Seat 3\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
       "priceEach": 450,
       "fifaListEach": 475,
       "fifaBuyerEach": 546.25,
       "saveEach": 96.25,
-      "savePct": 17.6,
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 10 - Germany vs Curaçao\nDate: Sunday, 14 June 2026 12:00\nVenue: Houston Stadium\nCategory: Category 1\nSeats: Block 352 · Row M · Seat 3\nYour price: $450 USD each\n(Qty: 1)\n\nIs this still available?"
+      "savePct": 17.6
     },
     {
       "id": "Lb707d129",
@@ -92,6 +53,7 @@
       "dateLabel": "Sunday, 14 June 2026",
       "timeLabel": "12:00",
       "sortDate": "2026-06-14T16:00:00+0000",
+      "soldAt": null,
       "category": "Category 1",
       "seatDisplay": "Block 352 · Row M · Seat 4",
       "block": "352",
@@ -100,13 +62,14 @@
         4
       ],
       "quantity": 1,
+      "status": "available",
       "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 10 - Germany vs Curaçao\nDate: Sunday, 14 June 2026 12:00\nVenue: Houston Stadium\nCategory: Category 1\nSeats: Block 352 · Row M · Seat 4\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
       "priceEach": 450,
       "fifaListEach": 474,
       "fifaBuyerEach": 545.1,
       "saveEach": 95.1,
-      "savePct": 17.4,
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 10 - Germany vs Curaçao\nDate: Sunday, 14 June 2026 12:00\nVenue: Houston Stadium\nCategory: Category 1\nSeats: Block 352 · Row M · Seat 4\nYour price: $450 USD each\n(Qty: 1)\n\nIs this still available?"
+      "savePct": 17.4
     },
     {
       "id": "L6413f0aa",
@@ -115,6 +78,7 @@
       "dateLabel": "Wednesday, 24 June 2026",
       "timeLabel": "19:00",
       "sortDate": "2026-06-24T23:00:00+0000",
+      "soldAt": null,
       "category": "Category 1",
       "seatDisplay": "Block 321 · Row D · Seat 19",
       "block": "321",
@@ -123,13 +87,14 @@
         19
       ],
       "quantity": 1,
+      "status": "available",
       "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 53 - Czechia vs Mexico\nDate: Wednesday, 24 June 2026 19:00\nVenue: Mexico City Stadium\nCategory: Category 1\nSeats: Block 321 · Row D · Seat 19\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
       "priceEach": 2500,
       "fifaListEach": 2500,
       "fifaBuyerEach": 2875,
       "saveEach": 375,
-      "savePct": 13,
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 53 - Czechia vs Mexico\nDate: Wednesday, 24 June 2026 19:00\nVenue: Mexico City Stadium\nCategory: Category 1\nSeats: Block 321 · Row D · Seat 19\nYour price: $2500 USD each\n(Qty: 1)\n\nIs this still available?"
+      "savePct": 13
     },
     {
       "id": "L440c40fe",
@@ -138,6 +103,7 @@
       "dateLabel": "Wednesday, 24 June 2026",
       "timeLabel": "19:00",
       "sortDate": "2026-06-24T23:00:00+0000",
+      "soldAt": null,
       "category": "Category 2",
       "seatDisplay": "Block 523 · Row 4 · Seat 22",
       "block": "523",
@@ -146,13 +112,14 @@
         22
       ],
       "quantity": 1,
+      "status": "available",
       "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 53 - Czechia vs Mexico\nDate: Wednesday, 24 June 2026 19:00\nVenue: Mexico City Stadium\nCategory: Category 2\nSeats: Block 523 · Row 4 · Seat 22\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
       "priceEach": 2350,
       "fifaListEach": 2777,
       "fifaBuyerEach": 3193.55,
       "saveEach": 843.55,
-      "savePct": 26.4,
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 53 - Czechia vs Mexico\nDate: Wednesday, 24 June 2026 19:00\nVenue: Mexico City Stadium\nCategory: Category 2\nSeats: Block 523 · Row 4 · Seat 22\nYour price: $2350 USD each\n(Qty: 1)\n\nIs this still available?"
+      "savePct": 26.4
     },
     {
       "id": "L1816ead8",
@@ -161,6 +128,7 @@
       "dateLabel": "Sunday, 28 June 2026",
       "timeLabel": "12:00",
       "sortDate": "2026-06-28T16:00:00+0000",
+      "soldAt": null,
       "category": "Front Category 2",
       "seatDisplay": "Block 343 · Row 1 · Seat 5",
       "block": "343",
@@ -169,13 +137,14 @@
         5
       ],
       "quantity": 1,
+      "status": "available",
       "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 73 - 2A vs 2B\nDate: Sunday, 28 June 2026 12:00\nVenue: Los Angeles Stadium\nCategory: Front Category 2\nSeats: Block 343 · Row 1 · Seat 5\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
       "priceEach": 1900,
       "fifaListEach": 1900,
       "fifaBuyerEach": 2185,
       "saveEach": 285,
-      "savePct": 13,
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 73 - 2A vs 2B\nDate: Sunday, 28 June 2026 12:00\nVenue: Los Angeles Stadium\nCategory: Front Category 2\nSeats: Block 343 · Row 1 · Seat 5\nYour price: $1900 USD each\n(Qty: 1)\n\nIs this still available?"
+      "savePct": 13
     },
     {
       "id": "L1816eaf0",
@@ -184,6 +153,7 @@
       "dateLabel": "Sunday, 28 June 2026",
       "timeLabel": "12:00",
       "sortDate": "2026-06-28T16:00:00+0000",
+      "soldAt": null,
       "category": "Front Category 2",
       "seatDisplay": "Block 343 · Row 1 · Seat 6",
       "block": "343",
@@ -192,13 +162,14 @@
         6
       ],
       "quantity": 1,
+      "status": "available",
       "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 73 - 2A vs 2B\nDate: Sunday, 28 June 2026 12:00\nVenue: Los Angeles Stadium\nCategory: Front Category 2\nSeats: Block 343 · Row 1 · Seat 6\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
       "priceEach": 1900,
       "fifaListEach": 1900,
       "fifaBuyerEach": 2185,
       "saveEach": 285,
-      "savePct": 13,
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 73 - 2A vs 2B\nDate: Sunday, 28 June 2026 12:00\nVenue: Los Angeles Stadium\nCategory: Front Category 2\nSeats: Block 343 · Row 1 · Seat 6\nYour price: $1900 USD each\n(Qty: 1)\n\nIs this still available?"
+      "savePct": 13
     },
     {
       "id": "L7cd09c76",
@@ -207,6 +178,7 @@
       "dateLabel": "Tuesday, 30 June 2026",
       "timeLabel": "19:00",
       "sortDate": "2026-06-30T23:00:00+0000",
+      "soldAt": null,
       "category": "Category 1",
       "seatDisplay": "Block 315 · Row D · Seat 17",
       "block": "315",
@@ -215,13 +187,14 @@
         17
       ],
       "quantity": 1,
+      "status": "available",
       "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 79 - 1A vs 3CEFHI\nDate: Tuesday, 30 June 2026 19:00\nVenue: Mexico City Stadium\nCategory: Category 1\nSeats: Block 315 · Row D · Seat 17\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
       "priceEach": 2300,
       "fifaListEach": 2700,
       "fifaBuyerEach": 3105,
       "saveEach": 805,
-      "savePct": 25.9,
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 79 - 1A vs 3CEFHI\nDate: Tuesday, 30 June 2026 19:00\nVenue: Mexico City Stadium\nCategory: Category 1\nSeats: Block 315 · Row D · Seat 17\nYour price: $2300 USD each\n(Qty: 1)\n\nIs this still available?"
+      "savePct": 25.9
     },
     {
       "id": "L7cd09c77",
@@ -230,6 +203,7 @@
       "dateLabel": "Tuesday, 30 June 2026",
       "timeLabel": "19:00",
       "sortDate": "2026-06-30T23:00:00+0000",
+      "soldAt": null,
       "category": "Category 1",
       "seatDisplay": "Block 315 · Row D · Seat 18",
       "block": "315",
@@ -238,13 +212,14 @@
         18
       ],
       "quantity": 1,
+      "status": "available",
       "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 79 - 1A vs 3CEFHI\nDate: Tuesday, 30 June 2026 19:00\nVenue: Mexico City Stadium\nCategory: Category 1\nSeats: Block 315 · Row D · Seat 18\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
       "priceEach": 1900,
       "fifaListEach": 2500,
       "fifaBuyerEach": 2875,
       "saveEach": 975,
-      "savePct": 33.9,
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 79 - 1A vs 3CEFHI\nDate: Tuesday, 30 June 2026 19:00\nVenue: Mexico City Stadium\nCategory: Category 1\nSeats: Block 315 · Row D · Seat 18\nYour price: $1900 USD each\n(Qty: 1)\n\nIs this still available?"
+      "savePct": 33.9
     },
     {
       "id": "L517db75c",
@@ -253,6 +228,7 @@
       "dateLabel": "Tuesday, 30 June 2026",
       "timeLabel": "19:00",
       "sortDate": "2026-06-30T23:00:00+0000",
+      "soldAt": null,
       "category": "Category 2",
       "seatDisplay": "Block 568 · Row 12 · Seat 5",
       "block": "568",
@@ -261,13 +237,14 @@
         5
       ],
       "quantity": 1,
+      "status": "available",
       "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 79 - 1A vs 3CEFHI\nDate: Tuesday, 30 June 2026 19:00\nVenue: Mexico City Stadium\nCategory: Category 2\nSeats: Block 568 · Row 12 · Seat 5\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
       "priceEach": 2300,
       "fifaListEach": 2500,
       "fifaBuyerEach": 2875,
       "saveEach": 575,
-      "savePct": 20,
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 79 - 1A vs 3CEFHI\nDate: Tuesday, 30 June 2026 19:00\nVenue: Mexico City Stadium\nCategory: Category 2\nSeats: Block 568 · Row 12 · Seat 5\nYour price: $2300 USD each\n(Qty: 1)\n\nIs this still available?"
+      "savePct": 20
     },
     {
       "id": "L431f634b",
@@ -276,6 +253,7 @@
       "dateLabel": "Sunday, 5 July 2026",
       "timeLabel": "18:00",
       "sortDate": "2026-07-05T22:00:00+0000",
+      "soldAt": null,
       "category": "Category 1",
       "seatDisplay": "Block 317 · Row 12 · Seat 16",
       "block": "317",
@@ -284,13 +262,14 @@
         16
       ],
       "quantity": 1,
+      "status": "available",
       "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 92 - Winner 79 vs Winner 80\nDate: Sunday, 5 July 2026 18:00\nVenue: Mexico City Stadium\nCategory: Category 1\nSeats: Block 317 · Row 12 · Seat 16\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
       "priceEach": 1900,
       "fifaListEach": 1900,
       "fifaBuyerEach": 2185,
       "saveEach": 285,
-      "savePct": 13,
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 92 - Winner 79 vs Winner 80\nDate: Sunday, 5 July 2026 18:00\nVenue: Mexico City Stadium\nCategory: Category 1\nSeats: Block 317 · Row 12 · Seat 16\nYour price: $1900 USD each\n(Qty: 1)\n\nIs this still available?"
+      "savePct": 13
     },
     {
       "id": "L431f634c",
@@ -299,6 +278,7 @@
       "dateLabel": "Sunday, 5 July 2026",
       "timeLabel": "18:00",
       "sortDate": "2026-07-05T22:00:00+0000",
+      "soldAt": null,
       "category": "Category 1",
       "seatDisplay": "Block 317 · Row 12 · Seat 17",
       "block": "317",
@@ -307,13 +287,14 @@
         17
       ],
       "quantity": 1,
+      "status": "available",
       "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 92 - Winner 79 vs Winner 80\nDate: Sunday, 5 July 2026 18:00\nVenue: Mexico City Stadium\nCategory: Category 1\nSeats: Block 317 · Row 12 · Seat 17\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
       "priceEach": 1900,
       "fifaListEach": 1900,
       "fifaBuyerEach": 2185,
       "saveEach": 285,
-      "savePct": 13,
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 92 - Winner 79 vs Winner 80\nDate: Sunday, 5 July 2026 18:00\nVenue: Mexico City Stadium\nCategory: Category 1\nSeats: Block 317 · Row 12 · Seat 17\nYour price: $1900 USD each\n(Qty: 1)\n\nIs this still available?"
+      "savePct": 13
     },
     {
       "id": "Ld34b3a59",
@@ -322,6 +303,7 @@
       "dateLabel": "Sunday, 5 July 2026",
       "timeLabel": "18:00",
       "sortDate": "2026-07-05T22:00:00+0000",
+      "soldAt": null,
       "category": "Front Category 2",
       "seatDisplay": "Block 566 · Row 1 · Seat 13",
       "block": "566",
@@ -330,13 +312,14 @@
         13
       ],
       "quantity": 1,
+      "status": "available",
       "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 92 - Winner 79 vs Winner 80\nDate: Sunday, 5 July 2026 18:00\nVenue: Mexico City Stadium\nCategory: Front Category 2\nSeats: Block 566 · Row 1 · Seat 13\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
       "priceEach": 2296,
       "fifaListEach": 2500,
       "fifaBuyerEach": 2875,
       "saveEach": 579,
-      "savePct": 20.1,
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 92 - Winner 79 vs Winner 80\nDate: Sunday, 5 July 2026 18:00\nVenue: Mexico City Stadium\nCategory: Front Category 2\nSeats: Block 566 · Row 1 · Seat 13\nYour price: $2296 USD each\n(Qty: 1)\n\nIs this still available?"
+      "savePct": 20.1
     },
     {
       "id": "Ld34b3a5a",
@@ -345,6 +328,7 @@
       "dateLabel": "Sunday, 5 July 2026",
       "timeLabel": "18:00",
       "sortDate": "2026-07-05T22:00:00+0000",
+      "soldAt": null,
       "category": "Front Category 2",
       "seatDisplay": "Block 566 · Row 1 · Seat 14",
       "block": "566",
@@ -353,13 +337,14 @@
         14
       ],
       "quantity": 1,
+      "status": "available",
       "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 92 - Winner 79 vs Winner 80\nDate: Sunday, 5 July 2026 18:00\nVenue: Mexico City Stadium\nCategory: Front Category 2\nSeats: Block 566 · Row 1 · Seat 14\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
       "priceEach": 2300,
       "fifaListEach": 2500,
       "fifaBuyerEach": 2875,
       "saveEach": 575,
-      "savePct": 20,
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 92 - Winner 79 vs Winner 80\nDate: Sunday, 5 July 2026 18:00\nVenue: Mexico City Stadium\nCategory: Front Category 2\nSeats: Block 566 · Row 1 · Seat 14\nYour price: $2300 USD each\n(Qty: 1)\n\nIs this still available?"
+      "savePct": 20
     },
     {
       "id": "L55563194",
@@ -368,6 +353,7 @@
       "dateLabel": "Friday, 10 July 2026",
       "timeLabel": "12:00",
       "sortDate": "2026-07-10T16:00:00+0000",
+      "soldAt": null,
       "category": "Category 2",
       "seatDisplay": "Block 443 · Row 3 · Seat 3",
       "block": "443",
@@ -376,13 +362,14 @@
         3
       ],
       "quantity": 1,
+      "status": "available",
       "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 98 - Winner 93 vs Winner 94\nDate: Friday, 10 July 2026 12:00\nVenue: Los Angeles Stadium\nCategory: Category 2\nSeats: Block 443 · Row 3 · Seat 3\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
       "priceEach": 2500,
       "fifaListEach": 2500,
       "fifaBuyerEach": 2875,
       "saveEach": 375,
-      "savePct": 13,
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 98 - Winner 93 vs Winner 94\nDate: Friday, 10 July 2026 12:00\nVenue: Los Angeles Stadium\nCategory: Category 2\nSeats: Block 443 · Row 3 · Seat 3\nYour price: $2500 USD each\n(Qty: 1)\n\nIs this still available?"
+      "savePct": 13
     },
     {
       "id": "L55563195",
@@ -391,6 +378,7 @@
       "dateLabel": "Friday, 10 July 2026",
       "timeLabel": "12:00",
       "sortDate": "2026-07-10T16:00:00+0000",
+      "soldAt": null,
       "category": "Category 2",
       "seatDisplay": "Block 443 · Row 3 · Seat 4",
       "block": "443",
@@ -399,13 +387,14 @@
         4
       ],
       "quantity": 1,
+      "status": "available",
       "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 98 - Winner 93 vs Winner 94\nDate: Friday, 10 July 2026 12:00\nVenue: Los Angeles Stadium\nCategory: Category 2\nSeats: Block 443 · Row 3 · Seat 4\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
       "priceEach": 2500,
       "fifaListEach": 2500,
       "fifaBuyerEach": 2875,
       "saveEach": 375,
-      "savePct": 13,
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 98 - Winner 93 vs Winner 94\nDate: Friday, 10 July 2026 12:00\nVenue: Los Angeles Stadium\nCategory: Category 2\nSeats: Block 443 · Row 3 · Seat 4\nYour price: $2500 USD each\n(Qty: 1)\n\nIs this still available?"
+      "savePct": 13
     },
     {
       "id": "La8dbb7c7",
@@ -414,6 +403,7 @@
       "dateLabel": "Tuesday, 14 July 2026",
       "timeLabel": "14:00",
       "sortDate": "2026-07-14T18:00:00+0000",
+      "soldAt": null,
       "category": "Category 2",
       "seatDisplay": "Block 432 · Row 3 · Seat 11",
       "block": "432",
@@ -422,13 +412,14 @@
         11
       ],
       "quantity": 1,
+      "status": "available",
       "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 101 - Winner 97 vs Winner 98\nDate: Tuesday, 14 July 2026 14:00\nVenue: Dallas Stadium\nCategory: Category 2\nSeats: Block 432 · Row 3 · Seat 11\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
       "priceEach": 3700,
       "fifaListEach": 5800,
       "fifaBuyerEach": 6670,
       "saveEach": 2970,
-      "savePct": 44.5,
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 101 - Winner 97 vs Winner 98\nDate: Tuesday, 14 July 2026 14:00\nVenue: Dallas Stadium\nCategory: Category 2\nSeats: Block 432 · Row 3 · Seat 11\nYour price: $3700 USD each\n(Qty: 1)\n\nIs this still available?"
+      "savePct": 44.5
     },
     {
       "id": "La8dbb7c5",
@@ -437,6 +428,7 @@
       "dateLabel": "Tuesday, 14 July 2026",
       "timeLabel": "14:00",
       "sortDate": "2026-07-14T18:00:00+0000",
+      "soldAt": null,
       "category": "Category 2",
       "seatDisplay": "Block 432 · Row 3 · Seat 12",
       "block": "432",
@@ -445,13 +437,68 @@
         12
       ],
       "quantity": 1,
+      "status": "available",
       "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 101 - Winner 97 vs Winner 98\nDate: Tuesday, 14 July 2026 14:00\nVenue: Dallas Stadium\nCategory: Category 2\nSeats: Block 432 · Row 3 · Seat 12\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
       "priceEach": 3700,
       "fifaListEach": 5800,
       "fifaBuyerEach": 6670,
       "saveEach": 2970,
-      "savePct": 44.5,
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 101 - Winner 97 vs Winner 98\nDate: Tuesday, 14 July 2026 14:00\nVenue: Dallas Stadium\nCategory: Category 2\nSeats: Block 432 · Row 3 · Seat 12\nYour price: $3700 USD each\n(Qty: 1)\n\nIs this still available?"
+      "savePct": 44.5
+    },
+    {
+      "id": "Lbc38e7a0",
+      "matchTitle": "FIFA World Cup 2026™ - Match 1 - Mexico vs South Africa",
+      "venue": "Mexico City Stadium",
+      "dateLabel": "Thursday, 11 June 2026",
+      "timeLabel": "13:00",
+      "sortDate": "2026-06-11T17:00:00+0000",
+      "soldAt": "2026-05-19",
+      "category": "Category 3",
+      "seatDisplay": "Block 640 · Row 5 · Seat 21",
+      "block": "640",
+      "row": "5",
+      "seats": [
+        21
+      ],
+      "quantity": 1,
+      "status": "sold"
+    },
+    {
+      "id": "Lbc38e7a1",
+      "matchTitle": "FIFA World Cup 2026™ - Match 1 - Mexico vs South Africa",
+      "venue": "Mexico City Stadium",
+      "dateLabel": "Thursday, 11 June 2026",
+      "timeLabel": "13:00",
+      "sortDate": "2026-06-11T17:00:00+0000",
+      "soldAt": "2026-05-19",
+      "category": "Category 3",
+      "seatDisplay": "Block 640 · Row 5 · Seat 22",
+      "block": "640",
+      "row": "5",
+      "seats": [
+        22
+      ],
+      "quantity": 1,
+      "status": "sold"
+    },
+    {
+      "id": "Lff73ec96",
+      "matchTitle": "FIFA World Cup 2026™ - Match 1 - Mexico vs South Africa",
+      "venue": "Mexico City Stadium",
+      "dateLabel": "Thursday, 11 June 2026",
+      "timeLabel": "13:00",
+      "sortDate": "2026-06-11T17:00:00+0000",
+      "soldAt": "2026-06-01",
+      "category": "Front Category 2",
+      "seatDisplay": "Block 536 · Row 1 · Seat 9",
+      "block": "536",
+      "row": "1",
+      "seats": [
+        9
+      ],
+      "quantity": 1,
+      "status": "sold"
     }
   ]
 }
