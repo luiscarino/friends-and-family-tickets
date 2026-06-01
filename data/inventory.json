@@ -1,7 +1,7 @@
 {
   "format": "fwc26-friends-family-catalog",
   "formatVersion": 2,
-  "publishedAt": "2026-06-01T21:41:08.699Z",
+  "publishedAt": "2026-06-01T21:49:41.287Z",
   "brand": {
     "title": "Friends and Family Tickets",
     "tagline": "Private WC26 listings · Invite only",
@@ -17,10 +17,37 @@
     "This page is unlisted; please do not share the link publicly."
   ],
   "stats": {
-    "availableCount": 17,
+    "availableCount": 18,
     "soldCount": 4
   },
   "listings": [
+    {
+      "id": "La4faa21d",
+      "matchKey": "M9c853e4b",
+      "matchOrder": 0,
+      "matchTitle": "FIFA World Cup 2026™ - Match 1 - Mexico vs South Africa",
+      "venue": "Mexico City Stadium",
+      "dateLabel": "Thursday, 11 June 2026",
+      "timeLabel": "13:00",
+      "sortDate": "2026-06-11T17:00:00+0000",
+      "soldAt": null,
+      "category": "Front Category 2",
+      "seatDisplay": "Block 534 · Row 1 · Seat 7",
+      "block": "534",
+      "row": "1",
+      "seats": [
+        7
+      ],
+      "quantity": 1,
+      "status": "available",
+      "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 1 - Mexico vs South Africa\nDate: Thursday, 11 June 2026 13:00\nVenue: Mexico City Stadium\nCategory: Front Category 2\nSeats: Block 534 · Row 1 · Seat 7\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
+      "priceEach": 3500,
+      "fifaListEach": 4000,
+      "fifaBuyerEach": 4600,
+      "saveEach": 1100,
+      "savePct": 23.9
+    },
     {
       "id": "Lff73ec96",
       "matchKey": "M9c853e4b",

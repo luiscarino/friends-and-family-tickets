@@ -130,6 +130,31 @@
     return { available, sold };
   }
 
+  /** Older exports may lack matchKey/matchOrder — infer so grouping still works. */
+  function backfillListingMatchFields(listings) {
+    if (!Array.isArray(listings)) return;
+    const seen = new Map();
+    let order = 0;
+    for (const l of listings) {
+      const title = String(l.matchTitle || "Match");
+      if (!seen.has(title)) {
+        seen.set(title, order);
+        order += 1;
+      }
+      if (l.matchOrder == null || l.matchOrder === undefined) {
+        l.matchOrder = seen.get(title);
+      }
+      if (!l.matchKey) {
+        const raw = `${title}\0${l.sortDate || ""}\0${l.venue || ""}`;
+        let h = 5381;
+        for (let i = 0; i < raw.length; i += 1) {
+          h = ((h << 5) + h + raw.charCodeAt(i)) >>> 0;
+        }
+        l.matchKey = `M${h.toString(16)}`;
+      }
+    }
+  }
+
   function groupListingsInOrder(rows) {
     const groups = [];
     const map = new Map();
@@ -157,9 +182,13 @@
   function renderMatchHeader(group) {
     const datePart = [group.dateLabel, group.timeLabel].filter(Boolean).join(" · ");
     const counts = countStatuses(group.listings);
+    const total = group.listings.length;
     return (
-      `<header class="ff-match-header">` +
+      `<header class="ff-match-header" role="group" aria-label="${escapeHtml(group.matchTitle)}">` +
+      `<div class="ff-match-header-accent" aria-hidden="true"></div>` +
+      `<div class="ff-match-header-inner">` +
       `<div class="ff-match-header-main">` +
+      `<p class="ff-match-header-eyebrow">Match · ${total} ticket${total === 1 ? "" : "s"}</p>` +
       `<h2 class="ff-match-header-title">${escapeHtml(group.matchTitle)}</h2>` +
       `<p class="ff-match-header-meta">${escapeHtml(datePart)}${datePart && group.venue ? " · " : ""}${escapeHtml(group.venue)}</p>` +
       `</div>` +
@@ -168,6 +197,7 @@
       `<span class="ff-stat-sep"> · </span>` +
       `<span class="ff-stat ff-stat--sold">${counts.sold} sold</span>` +
       `</p>` +
+      `</div>` +
       `</header>`
     );
   }
@@ -238,21 +268,24 @@
     return rows;
   }
 
-  function renderAvailableCard(l) {
-    if (listingStatus(l) === "sold") return renderSoldCard(l);
+  function renderAvailableCard(l, inGroup) {
+    if (listingStatus(l) === "sold") return renderSoldCard(l, inGroup);
     const datePart = [l.dateLabel, l.timeLabel].filter(Boolean).join(" · ");
     const hasPrice = Number.isFinite(Number(l.priceEach));
     const href = hasPrice ? waHref(l, catalog.brand) : "";
     const waBtn = hasPrice
       ? `<a class="ff-btn-wa" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">Buy on WhatsApp</a>`
       : "";
+    const head = inGroup
+      ? `<p class="ff-seat ff-seat--lead">${escapeHtml(l.category)} · ${escapeHtml(l.seatDisplay)} · Qty ${l.quantity}</p>`
+      : `<h2 class="ff-match">${escapeHtml(l.matchTitle)}</h2>` +
+        `<p class="ff-meta">${escapeHtml(datePart)}${datePart && l.venue ? " · " : ""}${escapeHtml(l.venue)}</p>` +
+        `<p class="ff-seat">${escapeHtml(l.category)} · ${escapeHtml(l.seatDisplay)} · Qty ${l.quantity}</p>`;
     return (
-      `<article class="ff-card ff-card--available" data-id="${escapeHtml(l.id)}" data-status="available">` +
+      `<article class="ff-card ff-card--available${inGroup ? " ff-card--ingroup" : ""}" data-id="${escapeHtml(l.id)}" data-status="available">` +
       `<div class="ff-card-body">` +
       `<div class="ff-card-head">` +
-      `<h2 class="ff-match">${escapeHtml(l.matchTitle)}</h2>` +
-      `<p class="ff-meta">${escapeHtml(datePart)}${datePart && l.venue ? " · " : ""}${escapeHtml(l.venue)}</p>` +
-      `<p class="ff-seat">${escapeHtml(l.category)} · ${escapeHtml(l.seatDisplay)} · Qty ${l.quantity}</p>` +
+      head +
       (l.publicNote ? `<p class="ff-note">${escapeHtml(l.publicNote)}</p>` : "") +
       `</div>` +
       `<div class="ff-pricing">` +
@@ -268,20 +301,26 @@
     );
   }
 
-  function renderSoldCard(l) {
+  function renderSoldCard(l, inGroup) {
     const datePart = [l.dateLabel, l.timeLabel].filter(Boolean).join(" · ");
     const soldLine = fmtSoldDate(l.soldAt);
     const aria = `Sold — ${l.matchTitle}, ${l.seatDisplay}`;
+    const head = inGroup
+      ? `<div class="ff-card-title-row">` +
+        `<p class="ff-seat ff-seat--lead">${escapeHtml(l.category)} · ${escapeHtml(l.seatDisplay)} · Qty ${l.quantity}</p>` +
+        `<span class="ff-badge-sold">SOLD</span>` +
+        `</div>`
+      : `<div class="ff-card-title-row">` +
+        `<h2 class="ff-match">${escapeHtml(l.matchTitle)}</h2>` +
+        `<span class="ff-badge-sold">SOLD</span>` +
+        `</div>` +
+        `<p class="ff-meta">${escapeHtml(datePart)}${datePart && l.venue ? " · " : ""}${escapeHtml(l.venue)}</p>` +
+        `<p class="ff-seat">${escapeHtml(l.category)} · ${escapeHtml(l.seatDisplay)} · Qty ${l.quantity}</p>`;
     return (
-      `<article class="ff-card ff-card--sold" data-id="${escapeHtml(l.id)}" data-status="sold" aria-label="${escapeHtml(aria)}">` +
+      `<article class="ff-card ff-card--sold${inGroup ? " ff-card--ingroup" : ""}" data-id="${escapeHtml(l.id)}" data-status="sold" aria-label="${escapeHtml(aria)}">` +
       `<div class="ff-card-body">` +
       `<div class="ff-card-head">` +
-      `<div class="ff-card-title-row">` +
-      `<h2 class="ff-match">${escapeHtml(l.matchTitle)}</h2>` +
-      `<span class="ff-badge-sold">SOLD</span>` +
-      `</div>` +
-      `<p class="ff-meta">${escapeHtml(datePart)}${datePart && l.venue ? " · " : ""}${escapeHtml(l.venue)}</p>` +
-      `<p class="ff-seat">${escapeHtml(l.category)} · ${escapeHtml(l.seatDisplay)} · Qty ${l.quantity}</p>` +
+      head +
       (l.publicNote ? `<p class="ff-note">${escapeHtml(l.publicNote)}</p>` : "") +
       `</div>` +
       `<div class="ff-sold-foot">` +
@@ -293,8 +332,8 @@
     );
   }
 
-  function renderCard(l) {
-    return listingStatus(l) === "sold" ? renderSoldCard(l) : renderAvailableCard(l);
+  function renderCard(l, inGroup) {
+    return listingStatus(l) === "sold" ? renderSoldCard(l, inGroup) : renderAvailableCard(l, inGroup);
   }
 
   function renderStats() {
@@ -349,7 +388,7 @@
             (g) =>
               `<section class="ff-match-group" data-match-key="${escapeHtml(g.key)}">` +
               renderMatchHeader(g) +
-              `<div class="ff-match-listings">${g.listings.map(renderCard).join("")}</div>` +
+              `<div class="ff-match-listings">${g.listings.map((l) => renderCard(l, true)).join("")}</div>` +
               `</section>`
           )
           .join("");
@@ -359,6 +398,9 @@
 
   function applyCatalog(data) {
     catalog = data;
+    if (catalog && Array.isArray(catalog.listings)) {
+      backfillListingMatchFields(catalog.listings);
+    }
     if (els.brandTitle && data.brand && data.brand.title) els.brandTitle.textContent = data.brand.title;
     if (els.brandTagline && data.brand && data.brand.tagline) {
       els.brandTagline.textContent = data.brand.tagline;
