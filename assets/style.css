@@ -184,6 +184,8 @@ body {
 
 .ff-stage-summary {
   display: block;
+  width: 100%;
+  box-sizing: border-box;
   cursor: pointer;
   list-style: none;
   user-select: none;
@@ -202,21 +204,20 @@ body {
   display: none;
 }
 
-/* Safari ignores flex on <summary> — layout lives on inner row */
+/* Valid phrasing wrapper — grid works in Chrome + Safari (no div inside summary) */
 .ff-stage-summary-row {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
   align-items: center;
+  column-gap: 16px;
   width: 100%;
   box-sizing: border-box;
   padding: 20px 4px;
-  gap: 16px;
 }
 
 .ff-stage-label {
-  flex: 1 1 auto;
-  min-width: 0;
   margin: 0;
+  min-width: 0;
   font-size: 1.15rem;
   font-weight: 700;
   color: #fff;
@@ -224,9 +225,7 @@ body {
 }
 
 .ff-stage-counts {
-  flex: 0 0 auto;
-  margin-left: auto;
-  padding-left: 12px;
+  justify-self: end;
   font-size: 0.88rem;
   font-weight: 600;
   white-space: nowrap;
@@ -234,8 +233,7 @@ body {
 }
 
 .ff-stage-chevron {
-  flex: 0 0 auto;
-  margin-left: 12px;
+  justify-self: end;
   width: 32px;
   height: 32px;
   border-radius: 50%;

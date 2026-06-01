@@ -240,11 +240,11 @@
     return (
       `<details class="ff-stage-panel" open>` +
       `<summary class="ff-stage-summary">` +
-      `<div class="ff-stage-summary-row">` +
+      `<span class="ff-stage-summary-row">` +
       `<span class="ff-stage-label">${escapeHtml(stageGroup.label)}</span>` +
-      (countHtml ? `<span class="ff-stage-counts">${countHtml}</span>` : "") +
+      (countHtml ? `<span class="ff-stage-counts">${countHtml}</span>` : `<span class="ff-stage-counts" aria-hidden="true"></span>`) +
       `<span class="ff-stage-chevron" aria-hidden="true"></span>` +
-      `</div>` +
+      `</span>` +
       `</summary>` +
       `<div class="ff-stage-body">${body}</div>` +
       `</details>`
