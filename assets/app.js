@@ -240,9 +240,11 @@
     return (
       `<details class="ff-stage-panel" open>` +
       `<summary class="ff-stage-summary">` +
+      `<div class="ff-stage-summary-row">` +
       `<span class="ff-stage-label">${escapeHtml(stageGroup.label)}</span>` +
       (countHtml ? `<span class="ff-stage-counts">${countHtml}</span>` : "") +
       `<span class="ff-stage-chevron" aria-hidden="true"></span>` +
+      `</div>` +
       `</summary>` +
       `<div class="ff-stage-body">${body}</div>` +
       `</details>`
@@ -500,8 +502,10 @@
       els.contact.hidden = false;
       const em = String(data.brand.contactEmail).trim();
       els.contact.innerHTML =
+        `<span class="ff-contact-row">` +
         `<span class="ff-contact-lead muted">Questions about a listing?</span> ` +
-        `<a class="ff-btn-contact" href="mailto:${escapeHtml(em)}">Email the seller</a>`;
+        `<a class="ff-btn-contact" href="mailto:${escapeHtml(em)}">Email the seller</a>` +
+        `</span>`;
     }
     fillSelect(els.venue, uniqueValues(data.listings || [], "venue"), "All venues");
     fillSelect(els.category, uniqueValues(data.listings || [], "category"), "All categories");

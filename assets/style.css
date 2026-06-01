@@ -111,6 +111,13 @@ body {
 .ff-stat-sep {
   color: var(--ff-muted);
   font-weight: 400;
+  padding: 0 0.2em;
+}
+
+.ff-stage-counts .ff-stat,
+.ff-match-header-counts .ff-stat,
+.ff-stats .ff-stat {
+  display: inline-block;
 }
 
 .ff-main {
@@ -176,15 +183,14 @@ body {
 }
 
 .ff-stage-summary {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
-  padding: 20px 4px;
+  display: block;
   cursor: pointer;
   list-style: none;
   user-select: none;
   margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .ff-stage-summary::-webkit-details-marker {
@@ -196,9 +202,21 @@ body {
   display: none;
 }
 
+/* Safari ignores flex on <summary> — layout lives on inner row */
+.ff-stage-summary-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 4px;
+  gap: 16px;
+}
+
 .ff-stage-label {
   flex: 1 1 auto;
   min-width: 0;
+  margin: 0;
   font-size: 1.15rem;
   font-weight: 700;
   color: #fff;
@@ -207,13 +225,17 @@ body {
 
 .ff-stage-counts {
   flex: 0 0 auto;
+  margin-left: auto;
+  padding-left: 12px;
   font-size: 0.88rem;
   font-weight: 600;
   white-space: nowrap;
+  text-align: right;
 }
 
 .ff-stage-chevron {
   flex: 0 0 auto;
+  margin-left: 12px;
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -564,6 +586,9 @@ body {
 
 .ff-contact {
   margin: 1.25rem 0 0;
+}
+
+.ff-contact-row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
