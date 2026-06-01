@@ -224,9 +224,14 @@
     return stages;
   }
 
+  function stageBodyDomId(stageId) {
+    return "ff-stage-body-" + String(stageId || "unknown").replace(/[^a-zA-Z0-9_-]/g, "-");
+  }
+
   function renderStageSection(stageGroup) {
     const counts = countStatuses(stageGroup.listings);
     const countHtml = renderStatusCounts(counts);
+    const bodyId = stageBodyDomId(stageGroup.id);
     const matchGroups = groupListingsInOrder(stageGroup.listings);
     const body = matchGroups
       .map(
@@ -238,18 +243,20 @@
       )
       .join("");
     return (
-      `<details class="ff-stage-panel" open>` +
-      `<summary class="ff-stage-summary">` +
-      `<span class="ff-stage-summary-row">` +
-      `<span class="ff-stage-aside">` +
+      `<section class="ff-stage-panel is-open" data-stage-id="${escapeHtml(stageGroup.id)}">` +
+      `<button type="button" class="ff-stage-header" aria-expanded="true" aria-controls="${escapeHtml(bodyId)}">` +
+      `<span class="ff-stage-header-inner">` +
+      `<span class="ff-stage-header-main">` +
+      `<span class="ff-stage-title">${escapeHtml(stageGroup.label)}</span>` +
+      `</span>` +
+      `<span class="ff-stage-header-trailing">` +
       (countHtml ? `<span class="ff-stage-counts">${countHtml}</span>` : "") +
       `<span class="ff-stage-chevron" aria-hidden="true"></span>` +
       `</span>` +
-      `<span class="ff-stage-label">${escapeHtml(stageGroup.label)}</span>` +
       `</span>` +
-      `</summary>` +
-      `<div class="ff-stage-body">${body}</div>` +
-      `</details>`
+      `</button>` +
+      `<div class="ff-stage-body" id="${escapeHtml(bodyId)}">${body}</div>` +
+      `</section>`
     );
   }
 
@@ -536,6 +543,19 @@
     }
   }
 
+  function wireStageAccordions() {
+    if (!els.listings || els.listings._stageWired) return;
+    els.listings._stageWired = true;
+    els.listings.addEventListener("click", (e) => {
+      const btn = e.target.closest(".ff-stage-header");
+      if (!btn || !els.listings.contains(btn)) return;
+      const panel = btn.closest(".ff-stage-panel");
+      if (!panel) return;
+      const open = panel.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  }
+
   function wireFilters() {
     ["input", "change"].forEach((ev) => {
       els.search && els.search.addEventListener(ev, render);
@@ -569,5 +589,6 @@
   }
 
   wireFilters();
+  wireStageAccordions();
   loadCatalog();
 })();

@@ -182,53 +182,38 @@ body {
   border-bottom: none;
 }
 
-.ff-stage-summary {
+.ff-stage-header {
   display: block;
   width: 100%;
-  box-sizing: border-box;
-  cursor: pointer;
-  list-style: none;
-  user-select: none;
   margin: 0;
   padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
 }
 
-.ff-stage-summary::-webkit-details-marker {
-  display: none;
-}
-
-.ff-stage-summary::marker {
-  content: "";
-  display: none;
-}
-
-/* Float layout inside <summary> — reliable in Safari + Chrome (no flex/grid on summary) */
-.ff-stage-summary-row {
-  display: block;
+.ff-stage-header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
   padding: 20px 4px;
-  overflow: hidden;
+  width: 100%;
 }
 
-.ff-stage-aside {
-  float: right;
-  margin-left: 16px;
-  white-space: nowrap;
+.ff-stage-header-main {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
-.ff-stage-counts {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 12px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  text-align: right;
-}
-
-.ff-stage-label {
+.ff-stage-title {
   display: block;
-  overflow: hidden;
   margin: 0;
   font-size: 1.15rem;
   font-weight: 700;
@@ -236,9 +221,23 @@ body {
   line-height: 1.35;
 }
 
+.ff-stage-header-trailing {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 12px;
+}
+
+.ff-stage-counts {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-align: right;
+}
+
 .ff-stage-chevron {
-  display: inline-block;
-  vertical-align: middle;
+  flex-shrink: 0;
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -260,8 +259,12 @@ body {
   transform: translate(-50%, -65%) rotate(45deg);
 }
 
-.ff-stage-panel[open] .ff-stage-chevron {
+.ff-stage-panel.is-open .ff-stage-chevron {
   transform: rotate(180deg);
+}
+
+.ff-stage-panel:not(.is-open) .ff-stage-body {
+  display: none;
 }
 
 .ff-stage-body {
