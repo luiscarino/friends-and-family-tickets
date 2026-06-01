@@ -1,7 +1,7 @@
 {
   "format": "fwc26-friends-family-catalog",
   "formatVersion": 2,
-  "publishedAt": "2026-06-01T21:16:35.375Z",
+  "publishedAt": "2026-06-01T21:41:08.699Z",
   "brand": {
     "title": "Friends and Family Tickets",
     "tagline": "Private WC26 listings · Invite only",
@@ -22,7 +22,69 @@
   },
   "listings": [
     {
+      "id": "Lff73ec96",
+      "matchKey": "M9c853e4b",
+      "matchOrder": 0,
+      "matchTitle": "FIFA World Cup 2026™ - Match 1 - Mexico vs South Africa",
+      "venue": "Mexico City Stadium",
+      "dateLabel": "Thursday, 11 June 2026",
+      "timeLabel": "13:00",
+      "sortDate": "2026-06-11T17:00:00+0000",
+      "soldAt": "2026-06-01",
+      "category": "Front Category 2",
+      "seatDisplay": "Block 536 · Row 1 · Seat 9",
+      "block": "536",
+      "row": "1",
+      "seats": [
+        9
+      ],
+      "quantity": 1,
+      "status": "sold"
+    },
+    {
+      "id": "Lbc38e7a0",
+      "matchKey": "M9c853e4b",
+      "matchOrder": 0,
+      "matchTitle": "FIFA World Cup 2026™ - Match 1 - Mexico vs South Africa",
+      "venue": "Mexico City Stadium",
+      "dateLabel": "Thursday, 11 June 2026",
+      "timeLabel": "13:00",
+      "sortDate": "2026-06-11T17:00:00+0000",
+      "soldAt": "2026-05-19",
+      "category": "Category 3",
+      "seatDisplay": "Block 640 · Row 5 · Seat 21",
+      "block": "640",
+      "row": "5",
+      "seats": [
+        21
+      ],
+      "quantity": 1,
+      "status": "sold"
+    },
+    {
+      "id": "Lbc38e7a1",
+      "matchKey": "M9c853e4b",
+      "matchOrder": 0,
+      "matchTitle": "FIFA World Cup 2026™ - Match 1 - Mexico vs South Africa",
+      "venue": "Mexico City Stadium",
+      "dateLabel": "Thursday, 11 June 2026",
+      "timeLabel": "13:00",
+      "sortDate": "2026-06-11T17:00:00+0000",
+      "soldAt": "2026-05-19",
+      "category": "Category 3",
+      "seatDisplay": "Block 640 · Row 5 · Seat 22",
+      "block": "640",
+      "row": "5",
+      "seats": [
+        22
+      ],
+      "quantity": 1,
+      "status": "sold"
+    },
+    {
       "id": "Lb707d128",
+      "matchKey": "M8cfb2d9b",
+      "matchOrder": 1,
       "matchTitle": "FIFA World Cup 2026™ - Match 10 - Germany vs Curaçao",
       "venue": "Houston Stadium",
       "dateLabel": "Sunday, 14 June 2026",
@@ -48,6 +110,8 @@
     },
     {
       "id": "Lb707d129",
+      "matchKey": "M8cfb2d9b",
+      "matchOrder": 1,
       "matchTitle": "FIFA World Cup 2026™ - Match 10 - Germany vs Curaçao",
       "venue": "Houston Stadium",
       "dateLabel": "Sunday, 14 June 2026",
@@ -73,6 +137,8 @@
     },
     {
       "id": "L6413f0aa",
+      "matchKey": "Med238a3f",
+      "matchOrder": 3,
       "matchTitle": "FIFA World Cup 2026™ - Match 53 - Czechia vs Mexico",
       "venue": "Mexico City Stadium",
       "dateLabel": "Wednesday, 24 June 2026",
@@ -98,6 +164,8 @@
     },
     {
       "id": "L440c40fe",
+      "matchKey": "Med238a3f",
+      "matchOrder": 3,
       "matchTitle": "FIFA World Cup 2026™ - Match 53 - Czechia vs Mexico",
       "venue": "Mexico City Stadium",
       "dateLabel": "Wednesday, 24 June 2026",
@@ -123,6 +191,8 @@
     },
     {
       "id": "L1816ead8",
+      "matchKey": "Meb0041b9",
+      "matchOrder": 4,
       "matchTitle": "FIFA World Cup 2026™ - Match 73 - 2A vs 2B",
       "venue": "Los Angeles Stadium",
       "dateLabel": "Sunday, 28 June 2026",
@@ -148,6 +218,8 @@
     },
     {
       "id": "L1816eaf0",
+      "matchKey": "Meb0041b9",
+      "matchOrder": 4,
       "matchTitle": "FIFA World Cup 2026™ - Match 73 - 2A vs 2B",
       "venue": "Los Angeles Stadium",
       "dateLabel": "Sunday, 28 June 2026",
@@ -172,7 +244,36 @@
       "savePct": 13
     },
     {
+      "id": "L517db75c",
+      "matchKey": "M68c1e770",
+      "matchOrder": 5,
+      "matchTitle": "FIFA World Cup 2026™ - Match 79 - 1A vs 3CEFHI",
+      "venue": "Mexico City Stadium",
+      "dateLabel": "Tuesday, 30 June 2026",
+      "timeLabel": "19:00",
+      "sortDate": "2026-06-30T23:00:00+0000",
+      "soldAt": null,
+      "category": "Category 2",
+      "seatDisplay": "Block 568 · Row 12 · Seat 5",
+      "block": "568",
+      "row": "12",
+      "seats": [
+        5
+      ],
+      "quantity": 1,
+      "status": "available",
+      "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 79 - 1A vs 3CEFHI\nDate: Tuesday, 30 June 2026 19:00\nVenue: Mexico City Stadium\nCategory: Category 2\nSeats: Block 568 · Row 12 · Seat 5\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
+      "priceEach": 2300,
+      "fifaListEach": 2500,
+      "fifaBuyerEach": 2875,
+      "saveEach": 575,
+      "savePct": 20
+    },
+    {
       "id": "L7cd09c76",
+      "matchKey": "M68c1e770",
+      "matchOrder": 5,
       "matchTitle": "FIFA World Cup 2026™ - Match 79 - 1A vs 3CEFHI",
       "venue": "Mexico City Stadium",
       "dateLabel": "Tuesday, 30 June 2026",
@@ -198,6 +299,8 @@
     },
     {
       "id": "L7cd09c77",
+      "matchKey": "M68c1e770",
+      "matchOrder": 5,
       "matchTitle": "FIFA World Cup 2026™ - Match 79 - 1A vs 3CEFHI",
       "venue": "Mexico City Stadium",
       "dateLabel": "Tuesday, 30 June 2026",
@@ -222,82 +325,9 @@
       "savePct": 33.9
     },
     {
-      "id": "L517db75c",
-      "matchTitle": "FIFA World Cup 2026™ - Match 79 - 1A vs 3CEFHI",
-      "venue": "Mexico City Stadium",
-      "dateLabel": "Tuesday, 30 June 2026",
-      "timeLabel": "19:00",
-      "sortDate": "2026-06-30T23:00:00+0000",
-      "soldAt": null,
-      "category": "Category 2",
-      "seatDisplay": "Block 568 · Row 12 · Seat 5",
-      "block": "568",
-      "row": "12",
-      "seats": [
-        5
-      ],
-      "quantity": 1,
-      "status": "available",
-      "currency": "USD",
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 79 - 1A vs 3CEFHI\nDate: Tuesday, 30 June 2026 19:00\nVenue: Mexico City Stadium\nCategory: Category 2\nSeats: Block 568 · Row 12 · Seat 5\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
-      "priceEach": 2300,
-      "fifaListEach": 2500,
-      "fifaBuyerEach": 2875,
-      "saveEach": 575,
-      "savePct": 20
-    },
-    {
-      "id": "L431f634b",
-      "matchTitle": "FIFA World Cup 2026™ - Match 92 - Winner 79 vs Winner 80",
-      "venue": "Mexico City Stadium",
-      "dateLabel": "Sunday, 5 July 2026",
-      "timeLabel": "18:00",
-      "sortDate": "2026-07-05T22:00:00+0000",
-      "soldAt": null,
-      "category": "Category 1",
-      "seatDisplay": "Block 317 · Row 12 · Seat 16",
-      "block": "317",
-      "row": "12",
-      "seats": [
-        16
-      ],
-      "quantity": 1,
-      "status": "available",
-      "currency": "USD",
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 92 - Winner 79 vs Winner 80\nDate: Sunday, 5 July 2026 18:00\nVenue: Mexico City Stadium\nCategory: Category 1\nSeats: Block 317 · Row 12 · Seat 16\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
-      "priceEach": 1900,
-      "fifaListEach": 1900,
-      "fifaBuyerEach": 2185,
-      "saveEach": 285,
-      "savePct": 13
-    },
-    {
-      "id": "L431f634c",
-      "matchTitle": "FIFA World Cup 2026™ - Match 92 - Winner 79 vs Winner 80",
-      "venue": "Mexico City Stadium",
-      "dateLabel": "Sunday, 5 July 2026",
-      "timeLabel": "18:00",
-      "sortDate": "2026-07-05T22:00:00+0000",
-      "soldAt": null,
-      "category": "Category 1",
-      "seatDisplay": "Block 317 · Row 12 · Seat 17",
-      "block": "317",
-      "row": "12",
-      "seats": [
-        17
-      ],
-      "quantity": 1,
-      "status": "available",
-      "currency": "USD",
-      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 92 - Winner 79 vs Winner 80\nDate: Sunday, 5 July 2026 18:00\nVenue: Mexico City Stadium\nCategory: Category 1\nSeats: Block 317 · Row 12 · Seat 17\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
-      "priceEach": 1900,
-      "fifaListEach": 1900,
-      "fifaBuyerEach": 2185,
-      "saveEach": 285,
-      "savePct": 13
-    },
-    {
       "id": "Ld34b3a59",
+      "matchKey": "M529034ec",
+      "matchOrder": 6,
       "matchTitle": "FIFA World Cup 2026™ - Match 92 - Winner 79 vs Winner 80",
       "venue": "Mexico City Stadium",
       "dateLabel": "Sunday, 5 July 2026",
@@ -323,6 +353,8 @@
     },
     {
       "id": "Ld34b3a5a",
+      "matchKey": "M529034ec",
+      "matchOrder": 6,
       "matchTitle": "FIFA World Cup 2026™ - Match 92 - Winner 79 vs Winner 80",
       "venue": "Mexico City Stadium",
       "dateLabel": "Sunday, 5 July 2026",
@@ -347,7 +379,63 @@
       "savePct": 20
     },
     {
+      "id": "L431f634b",
+      "matchKey": "M529034ec",
+      "matchOrder": 6,
+      "matchTitle": "FIFA World Cup 2026™ - Match 92 - Winner 79 vs Winner 80",
+      "venue": "Mexico City Stadium",
+      "dateLabel": "Sunday, 5 July 2026",
+      "timeLabel": "18:00",
+      "sortDate": "2026-07-05T22:00:00+0000",
+      "soldAt": null,
+      "category": "Category 1",
+      "seatDisplay": "Block 317 · Row 12 · Seat 16",
+      "block": "317",
+      "row": "12",
+      "seats": [
+        16
+      ],
+      "quantity": 1,
+      "status": "available",
+      "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 92 - Winner 79 vs Winner 80\nDate: Sunday, 5 July 2026 18:00\nVenue: Mexico City Stadium\nCategory: Category 1\nSeats: Block 317 · Row 12 · Seat 16\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
+      "priceEach": 1900,
+      "fifaListEach": 1900,
+      "fifaBuyerEach": 2185,
+      "saveEach": 285,
+      "savePct": 13
+    },
+    {
+      "id": "L431f634c",
+      "matchKey": "M529034ec",
+      "matchOrder": 6,
+      "matchTitle": "FIFA World Cup 2026™ - Match 92 - Winner 79 vs Winner 80",
+      "venue": "Mexico City Stadium",
+      "dateLabel": "Sunday, 5 July 2026",
+      "timeLabel": "18:00",
+      "sortDate": "2026-07-05T22:00:00+0000",
+      "soldAt": null,
+      "category": "Category 1",
+      "seatDisplay": "Block 317 · Row 12 · Seat 17",
+      "block": "317",
+      "row": "12",
+      "seats": [
+        17
+      ],
+      "quantity": 1,
+      "status": "available",
+      "currency": "USD",
+      "whatsappMessage": "Hi! I'm interested in a Friends & Family ticket:\n\nMatch: FIFA World Cup 2026™ - Match 92 - Winner 79 vs Winner 80\nDate: Sunday, 5 July 2026 18:00\nVenue: Mexico City Stadium\nCategory: Category 1\nSeats: Block 317 · Row 12 · Seat 17\nYour price: $undefined USD each\n(Qty: 1)\n\nIs this still available?",
+      "priceEach": 1900,
+      "fifaListEach": 1900,
+      "fifaBuyerEach": 2185,
+      "saveEach": 285,
+      "savePct": 13
+    },
+    {
       "id": "L55563194",
+      "matchKey": "M121badef",
+      "matchOrder": 7,
       "matchTitle": "FIFA World Cup 2026™ - Match 98 - Winner 93 vs Winner 94",
       "venue": "Los Angeles Stadium",
       "dateLabel": "Friday, 10 July 2026",
@@ -373,6 +461,8 @@
     },
     {
       "id": "L55563195",
+      "matchKey": "M121badef",
+      "matchOrder": 7,
       "matchTitle": "FIFA World Cup 2026™ - Match 98 - Winner 93 vs Winner 94",
       "venue": "Los Angeles Stadium",
       "dateLabel": "Friday, 10 July 2026",
@@ -398,6 +488,8 @@
     },
     {
       "id": "La8dbb7c7",
+      "matchKey": "Mf9eb441",
+      "matchOrder": 8,
       "matchTitle": "FIFA World Cup 2026™ - Match 101 - Winner 97 vs Winner 98",
       "venue": "Dallas Stadium",
       "dateLabel": "Tuesday, 14 July 2026",
@@ -423,6 +515,8 @@
     },
     {
       "id": "La8dbb7c5",
+      "matchKey": "Mf9eb441",
+      "matchOrder": 8,
       "matchTitle": "FIFA World Cup 2026™ - Match 101 - Winner 97 vs Winner 98",
       "venue": "Dallas Stadium",
       "dateLabel": "Tuesday, 14 July 2026",
@@ -447,61 +541,9 @@
       "savePct": 44.5
     },
     {
-      "id": "Lbc38e7a0",
-      "matchTitle": "FIFA World Cup 2026™ - Match 1 - Mexico vs South Africa",
-      "venue": "Mexico City Stadium",
-      "dateLabel": "Thursday, 11 June 2026",
-      "timeLabel": "13:00",
-      "sortDate": "2026-06-11T17:00:00+0000",
-      "soldAt": "2026-05-19",
-      "category": "Category 3",
-      "seatDisplay": "Block 640 · Row 5 · Seat 21",
-      "block": "640",
-      "row": "5",
-      "seats": [
-        21
-      ],
-      "quantity": 1,
-      "status": "sold"
-    },
-    {
-      "id": "Lbc38e7a1",
-      "matchTitle": "FIFA World Cup 2026™ - Match 1 - Mexico vs South Africa",
-      "venue": "Mexico City Stadium",
-      "dateLabel": "Thursday, 11 June 2026",
-      "timeLabel": "13:00",
-      "sortDate": "2026-06-11T17:00:00+0000",
-      "soldAt": "2026-05-19",
-      "category": "Category 3",
-      "seatDisplay": "Block 640 · Row 5 · Seat 22",
-      "block": "640",
-      "row": "5",
-      "seats": [
-        22
-      ],
-      "quantity": 1,
-      "status": "sold"
-    },
-    {
-      "id": "Lff73ec96",
-      "matchTitle": "FIFA World Cup 2026™ - Match 1 - Mexico vs South Africa",
-      "venue": "Mexico City Stadium",
-      "dateLabel": "Thursday, 11 June 2026",
-      "timeLabel": "13:00",
-      "sortDate": "2026-06-11T17:00:00+0000",
-      "soldAt": "2026-06-01",
-      "category": "Front Category 2",
-      "seatDisplay": "Block 536 · Row 1 · Seat 9",
-      "block": "536",
-      "row": "1",
-      "seats": [
-        9
-      ],
-      "quantity": 1,
-      "status": "sold"
-    },
-    {
       "id": "La8dbb7c6",
+      "matchKey": "Mf9eb441",
+      "matchOrder": 8,
       "matchTitle": "FIFA World Cup 2026™ - Match 101 - Winner 97 vs Winner 98",
       "venue": "Dallas Stadium",
       "dateLabel": "Tuesday, 14 July 2026",

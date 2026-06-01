@@ -162,6 +162,48 @@ body {
   min-height: 1.25rem;
 }
 
+.ff-match-group {
+  margin-bottom: 28px;
+}
+
+.ff-match-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--ff-border);
+}
+
+.ff-match-header-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 650;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.ff-match-header-meta {
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  color: var(--ff-muted);
+}
+
+.ff-match-header-counts {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ff-match-listings {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .ff-listings {
   display: flex;
   flex-direction: column;

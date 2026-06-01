@@ -102,6 +102,76 @@
     return listingStatus(l) === "sold" ? 1 : 0;
   }
 
+  function seatSortKey(l) {
+    if (l.seats && l.seats.length && Number.isFinite(Number(l.seats[0]))) {
+      return Number(l.seats[0]);
+    }
+    const m = String(l.seatDisplay || "").match(/Seat\s*(\d+)/i);
+    return m ? parseInt(m[1], 10) : 99999;
+  }
+
+  function compareByMatchOrder(a, b) {
+    const mo = (a.matchOrder ?? 0) - (b.matchOrder ?? 0);
+    if (mo !== 0) return mo;
+    const mk = String(a.matchKey || "").localeCompare(String(b.matchKey || ""));
+    if (mk !== 0) return mk;
+    const sr = statusRank(a) - statusRank(b);
+    if (sr !== 0) return sr;
+    return seatSortKey(a) - seatSortKey(b) || String(a.seatDisplay || "").localeCompare(String(b.seatDisplay || ""));
+  }
+
+  function countStatuses(listings) {
+    let available = 0;
+    let sold = 0;
+    for (const l of listings || []) {
+      if (listingStatus(l) === "sold") sold += 1;
+      else available += 1;
+    }
+    return { available, sold };
+  }
+
+  function groupListingsInOrder(rows) {
+    const groups = [];
+    const map = new Map();
+    for (const l of rows) {
+      const k = l.matchKey || `${l.matchTitle}\0${l.sortDate}`;
+      if (!map.has(k)) {
+        const g = {
+          key: k,
+          matchTitle: l.matchTitle,
+          dateLabel: l.dateLabel,
+          timeLabel: l.timeLabel,
+          venue: l.venue,
+          sortDate: l.sortDate,
+          matchOrder: l.matchOrder ?? 0,
+          listings: [],
+        };
+        map.set(k, g);
+        groups.push(g);
+      }
+      map.get(k).listings.push(l);
+    }
+    return groups;
+  }
+
+  function renderMatchHeader(group) {
+    const datePart = [group.dateLabel, group.timeLabel].filter(Boolean).join(" · ");
+    const counts = countStatuses(group.listings);
+    return (
+      `<header class="ff-match-header">` +
+      `<div class="ff-match-header-main">` +
+      `<h2 class="ff-match-header-title">${escapeHtml(group.matchTitle)}</h2>` +
+      `<p class="ff-match-header-meta">${escapeHtml(datePart)}${datePart && group.venue ? " · " : ""}${escapeHtml(group.venue)}</p>` +
+      `</div>` +
+      `<p class="ff-match-header-counts">` +
+      `<span class="ff-stat ff-stat--available">${counts.available} available</span>` +
+      `<span class="ff-stat-sep"> · </span>` +
+      `<span class="ff-stat ff-stat--sold">${counts.sold} sold</span>` +
+      `</p>` +
+      `</header>`
+    );
+  }
+
   function filteredListings() {
     if (!catalog || !Array.isArray(catalog.listings)) return [];
     const q = (els.search && els.search.value || "").trim().toLowerCase();
@@ -132,32 +202,38 @@
     rows = rows.slice();
 
     if (sort === "price-asc" || sort === "price-desc") {
-      const available = rows.filter((l) => listingStatus(l) === "available");
-      const sold = rows.filter((l) => listingStatus(l) === "sold");
-      available.sort((a, b) => {
-        const d = (Number(a.priceEach) || 0) - (Number(b.priceEach) || 0);
-        return sort === "price-asc" ? d : -d;
-      });
-      sold.sort(
-        (a, b) =>
-          String(b.soldAt || b.sortDate).localeCompare(String(a.soldAt || a.sortDate)) ||
-          String(a.matchTitle).localeCompare(String(b.matchTitle))
-      );
-      rows = available.concat(sold);
+      rows.sort(compareByMatchOrder);
+      const groups = groupListingsInOrder(rows);
+      const flat = [];
+      for (const g of groups) {
+        const available = g.listings.filter((l) => listingStatus(l) === "available");
+        const sold = g.listings.filter((l) => listingStatus(l) === "sold");
+        available.sort((a, b) => {
+          const d = (Number(a.priceEach) || 0) - (Number(b.priceEach) || 0);
+          return sort === "price-asc" ? d : -d;
+        });
+        sold.sort(
+          (a, b) =>
+            seatSortKey(a) - seatSortKey(b) ||
+            String(a.seatDisplay || "").localeCompare(String(b.seatDisplay || ""))
+        );
+        flat.push(...available, ...sold);
+      }
+      rows = flat;
     } else if (sort === "date-desc") {
       rows.sort(
         (a, b) =>
-          statusRank(a) - statusRank(b) ||
           String(b.sortDate).localeCompare(String(a.sortDate)) ||
-          String(a.matchTitle).localeCompare(String(b.matchTitle))
+          compareByMatchOrder(a, b)
       );
-    } else {
+    } else if (sort === "date-asc") {
       rows.sort(
         (a, b) =>
-          statusRank(a) - statusRank(b) ||
           String(a.sortDate).localeCompare(String(b.sortDate)) ||
-          String(a.matchTitle).localeCompare(String(b.matchTitle))
+          compareByMatchOrder(a, b)
       );
+    } else {
+      rows.sort(compareByMatchOrder);
     }
     return rows;
   }
@@ -223,14 +299,10 @@
 
   function renderStats() {
     if (!els.catalogStats || !catalog) return;
-    const stats = catalog.stats || {};
-    let available = stats.availableCount;
-    let sold = stats.soldCount;
-    if (available == null || sold == null) {
-      const rows = catalog.listings || [];
-      available = rows.filter((l) => listingStatus(l) === "available").length;
-      sold = rows.filter((l) => listingStatus(l) === "sold").length;
-    }
+    const rows = catalog.listings || [];
+    const counted = countStatuses(rows);
+    const available = counted.available;
+    const sold = counted.sold;
     if (available === 0 && sold === 0) {
       els.catalogStats.hidden = true;
       return;
@@ -271,7 +343,16 @@
               : "No tickets match your filters.";
         els.listings.innerHTML = `<div class="ff-empty">${escapeHtml(msg)}</div>`;
       } else {
-        els.listings.innerHTML = rows.map(renderCard).join("");
+        const groups = groupListingsInOrder(rows);
+        els.listings.innerHTML = groups
+          .map(
+            (g) =>
+              `<section class="ff-match-group" data-match-key="${escapeHtml(g.key)}">` +
+              renderMatchHeader(g) +
+              `<div class="ff-match-listings">${g.listings.map(renderCard).join("")}</div>` +
+              `</section>`
+          )
+          .join("");
       }
     }
   }
